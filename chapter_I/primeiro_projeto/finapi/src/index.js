@@ -45,8 +45,14 @@ app.post("/conta", (req, res) => {
 });
 
 // Recuperar o extrato do cliente com base no cpf.
-app.get("/extrato/:cpf", (req, res) => {
-  const { cpf } = req.params;
+// Passando o CPF via header parms (como se fosse um token)
+app.get("/extrato", (req, res) => {
+  const { cpf } = req.headers
+
+// Passando o CPF via route params
+// app.get("/extrato/:cpf", (req, res) => {
+  // const { cpf } = req.params;
+
 
   const cliente = verificaClienteExiste(cpf);
   
