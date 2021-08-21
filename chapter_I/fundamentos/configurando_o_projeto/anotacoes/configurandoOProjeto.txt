@@ -1,0 +1,35 @@
+- Inciamos o projeto com o comando "npm init -y" ou "yarn init -y", o valor "-y" seta as configurações como as default tomadas pelos gerenciadores de pacotes.
+
+- Dessa forma o "package.json" é gerado, e nele é que temos informações sobre o projeto como nome, versão, arquivo principal, tipo de licença, dependencias (pacotes e libs) utilizados no projeto e também scripts como por exemplo aqueles responsaveis por rodar o projeto ou mesmo realizar o build dele.
+
+- Instalamos o express pelo comando "npm install express" ou "yarn add express". O express é um micro-framework que ira nos ajudar no gerenciamento de rotas, criar servidores e midlewares para a aplicação.
+
+- Criamos o arquivo "src/index.js" e importamos o express nesse arquivo. Postirormente instanciaremos um servidor na porta 3000 com o método "listen()", e acessando esse servidor pelo "localhost:3000"
+
+- Executamos o código com o comando "node <caminho_relativo>/index.js" via terminal.
+
+- Entretanto não há um retorno sobre esse código já que só instanciamos o express. Para que possamos acessar o servidor vamos utilizar o método "get()" do express, passando o "path" (que é o que vem logo depois da rota, no nosso caso por enquanto sendo localhost:3000), e o proximo parametro é o (request, response) que iremos utilizar em nossa requisição.
+
+- Posteriormente vamos retornar o "response" com o método "send" passando "Olá mundo!" como parametro, sendo então mostrada a string no browser.
+
+- É valido lembrar que o método "send" será pouco utilizado no contexto de APIs, normalmente utilizaremos o método "json" que nos permite retornar um "json" própriamente dito.
+
+- Para facilitar nossa vida ardua de desenvolver, vamos adicionar o "nodemon" ao projeto. Sendo essa lib responsavel por ficar observando mudanças do código e fazer o hot reload da nossa aplicação sem que seja preciso intervenção do desenvolvedor para isso.
+
+- Dessa forma inserimos ela como dependencia de desenvolvimento utilizando o comando "npm install nodemon --save-dev" ou "yarn add nodemon -D", e lá no "package.json" vamos criar o script conforme a seguir:
+    "scripts": {"dev": "nodemon src/index.js"}
+
+- Agora podemos iniciar nossa aplicação com o comando "npm run dev" e ela ficará rodando e escutando nossas modificações.
+
+- Vamos agora ver como utilizar os métodos HTTP mais comumente usados quando criamos uma API (GET, POST, PUT, PATCH, DELETE). Dessa forma vamos criar as rotas para cada um desses métodos, passando os recursos (nesse caso utilizaremos o recurso "cursos") para os métodos express referentes referentes aos métodos HTTP.
+
+- Para que possamos verificar melhor a parte das rotas, ou seja, para que possamos testa-las, já que o browser só aceita requisições do tipo GET por padrão. Vamos instalar e configurar a ferramenta "Insomnia" que nada mais é que uma interface onde podemos testar nossas API sem qualquer intervenção do front-end. Para baixar essa ferramenta basta acessar o link https://www.insomnia.rest
+
+- Para facilitar nossa vida, vamos adicionar o objeto {"baseURL": "http://localhost:3000"} no "Environment" do insomnia, assim poderemos utilizar a chave "baseURL" para referenciar o endereço do nosso servidor. Também criamos uma requisição para as rotas criadas anteriormente, passando os respectivos endereços e recursos para cada método HTTP.
+
+- Agora veremos um pouco sobre tipos de parametros de requisição:
+  - Route Params: são aqueles recebidos encapsulados na rota, isto é, aqueles que vem com a divisão pela "/" no exemplo anterior o ":id" é um Route Param. Esses parametros são utilizados para identificar um recurso quando queremos buscar(especificamente)/editar/deletar o mesmo.
+  
+  - Query Params: também estarão presentes na rota, mas são geralmente utilizados para paginação e filtros de busca. Nesse exemplo iremos passar os query params "page" e "order" na rota "cursos?page=1&oreder=asc" (método get). Assim iremos printar os query params recebidos no nosso terminal e veremos algo como {page: '1', order: 'asc'}. Podemos ainda passar esses parametros no insomnia pela aba "Query" passando a chave e o valor de cada parametro requisitado.
+
+  - Body Params: são os objetos passados em inserções ou alterações de algum recurso. Muito utilizado nos métodos POST, PUT e PATCH. Para exemplificar, vamos ao insomnia e na aba "body" vamos setar o tipo de body como "json" e na nossa rota de criação (método POST) vamos receber o body param. Antes de fazermos isso, vamos inserir um midleware para o express, já que ele não trabalha exclusivamente com JSON, então logo depois da linha "const app = express();" vamos inserir o "app.use(express.json());", caso contrario receberiamos "undefined" na requisição.
