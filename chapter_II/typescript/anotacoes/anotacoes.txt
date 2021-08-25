@@ -1,0 +1,27 @@
+#### Typescript ####
+  - Produto open-source desenvolvido pela Microsoft;
+  - Superset do Javascript (ou seja o proprio javascript com features adicionadas);
+  - Tipagem estática (!= do JS);
+
+#### Por que utilizar TS? ####
+  - Maior controle sobre os tipos das variaveis, trazendo maior segurança e aumento do desempenho durante a escrita do código;
+
+#### Prática com Typescript ####
+  - Iniciamos o projeto como "npm init -y" ou "yarn init -y";
+  - Instalmos o express com "npm install express";
+  - Criamos o arquivo "src/server.ts" (sendo .ts é a extensão do Typescript);
+  - Vamos importar o express no arquivo server utilizando "import express from express" (diferente do js que utilizamos const e require);
+  - Realizamos a instancia do express na variavel app e submios o servidor na porta "3333";
+  - Para que possamos ter acesso aos tipos de uma biblioteca externa na grande maioria das vezes é preciso fazer o download da biblioteca de tipos
+    isso é visto com os "..." apresetados logo abaixo do express quando fizemos o import, e se passarmos o mouse em cima veremos que uma mensagem
+    informando sobre a lib de tipos é apresentada;
+  - Para instalar a lib de tipos do express utlizaremos o comando "npm install --save-dev @types/express" 
+    vale ressaltar que o Typescript só é utilizado em ambiente de desenvolvimento, quando hospedarmos iremos fazer uma build do projeto;
+  - O que foi dito anteriormente é visto quando tentamos rodar o arquivo "server.ts" utilizando o node teremos um erro de syntax, e para isso
+    vamos instalar a dependencia do typescript como dependencia de desenvolvimento com o comando "npm install --save-dev typescript"
+    e também vamos rodar o comando "npx tsc --init" que irar criar um arquivo (tsconfig.json) de configuração para que o node possa "buildar" o 
+    projeto antes de interpreta-lo;
+  - Para exemplficar como o build é gerado, execute o comando "npx tsc" e o arquivo "server.js" será criado dentro da pasta src, "traduzindo"
+    o código escrito em Typescript para Javascript e assim sendo possível roda-lo com node.
+  - Para que não criemos o arquivo "Javascript" dentro da pasta SRC, vamos configurar o "outDir" no arquivo "tsconfig.js" e direcionar o diretorio
+    onde queremos que o conteudo build seja alocado.
