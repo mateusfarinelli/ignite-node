@@ -25,3 +25,19 @@
     o código escrito em Typescript para Javascript e assim sendo possível roda-lo com node.
   - Para que não criemos o arquivo "Javascript" dentro da pasta SRC, vamos configurar o "outDir" no arquivo "tsconfig.js" e direcionar o diretorio
     onde queremos que o conteudo build seja alocado.
+  
+
+#### RENTALX - Inicio da aplicação ####
+  - Iniciamos o projeto com "npm init -y", instalamos as dependencais inicias sendo elas:
+    - express: "npm install express"
+    - typescript: "npm install --save-dev typescript"
+    - @types/express: "npm install --save-dev @types/express"
+  - Vamos ver também sobre ESLint e Prettier para padronização de escrita do código
+
+  - Para que possamos trabalhar de forma mais simples instalamos a dependencia ts-node-dev com o comando "npm install --save-dev ts-node-dev" e no
+    package.json vamos adicionar dentro do objeto "scripts" (ou inseri-lo caso não exista) a linha "ts-node-dev --transpile-only src/server.ts"
+    Onde:
+      - "--transpile-only": faz somente a transpilação do código amenizando problemas de sintaxe e outros.
+      - "--ignore-watch node_modules": para não ficar observando as modificaões realziadas na node_modules
+      - "--respawn": faz reload da aplicação quando houver alterações de código
+      - "--inspect": permite conectar o debbuger do vscode no projeto
