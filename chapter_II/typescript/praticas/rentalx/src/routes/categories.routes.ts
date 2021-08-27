@@ -28,4 +28,10 @@ categoriesRoutes.post("/", (request, response) => {
   // categories.push(category);
 });
 
+categoriesRoutes.get("/", (request, response) => {
+  const categories = categoriesRepository.list();
+
+  return response.json(categories);
+});
+
 export { categoriesRoutes };
