@@ -26,3 +26,19 @@
     o dado.
     Então vamos inverter a dependencia, em vez do service ter a dependencia do repositorio passaremos
     a responsabilidade para quem chama o service.
+  
+  - Nessa segunda aula vamos abordar o LSP que diz: "Se para cada objeto O1 do tipo S existe um 
+    objeto O2 do tipo T de tal modo que para todos os programas P definidos em termos de T, 
+    o comportamento de P não muda quando O2 é substituído por O1, então S é um subtipo de T.".
+    Em outras palavras: "uma classe derivada deve ser substituível por sua classe base."
+    Ou ainda, se a classe B herda da classe A, então você deve ser capaz de usar B no lugar de 
+    A sem quebrar a funcionalidade.
+    Incialmente criamos o arquivo "repositories/CategoriesRepositoryInterface" que será a Interface
+    base (o contrato que vai nos permitir criar diferentes classes sem comprometer a funcionalidade) 
+    com os métodos "create, findByName e list". E também iremos criar o arquivo
+    "PostgresCategoriesRepository" que será uma classe que implementa essa interface.
+    Do arquivo CategoriesRepository vamos extrair a DTOInterface e move-la para o arquivo 
+    CategoriesRepositoryInterface e exporta-la (jutando assim o LSP ao DIP), permitindo assim que
+    as classes utilizem essa interface para tipar os dados recebidos como fizemos nas aulas passadas.
+    Dessa forma dentro do "categories.routes.ts" podemos alterar a classe que chamamos sem que 
+    se altere o seu comportamente, tão pouco quebre a funcionalidade, justificando assim o uso do LSP.

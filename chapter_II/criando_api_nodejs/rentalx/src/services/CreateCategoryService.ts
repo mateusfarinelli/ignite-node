@@ -1,7 +1,11 @@
+/**
+ * Refatorado para CategoriesRepositoryInterface, aplicando dessa forma o LSP
+ */
+// import { CategoriesRepository } from "../repositories/CategoriesRepository";
+
+import { CategoriesRepositoryInterface } from "../repositories/CategoriesRepositoryInterface";
+
 // Recebendo as informações necessárias conforme DTO criado no repository
-
-import { CategoriesRepository } from "../repositories/CategoriesRepository";
-
 interface RequestInterface {
   name: string;
   description: string;
@@ -20,7 +24,7 @@ interface RequestInterface {
 
 class CreateCategoryService {
   // "Implementado o DIP"
-  constructor(private categoriesRepository: CategoriesRepository) {}
+  constructor(private categoriesRepository: CategoriesRepositoryInterface) {}
 
   execute({ description, name }: RequestInterface): void {
     const categoryAlreadyExists = this.categoriesRepository.findByName(name);

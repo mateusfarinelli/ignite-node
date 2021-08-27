@@ -1,12 +1,22 @@
 import { Category } from "../models/Category";
+import {
+  CategoriesRepositoryInterface,
+  CreatedCtegoryDTOInterface,
+} from "./CategoriesRepositoryInterface";
 
 // DTO => Data Transfer Object -> Objeto responsavel por fazer a transferencia de dados entre uma camada e outra
-interface CreatedCtegoryDTOInterface {
-  name: string;
-  description: string;
-}
+/**
+ * Movido para CategoriesRepositoryInterface para estudarmos o LSP
+ */
+// interface CreatedCtegoryDTOInterface {
+//   name: string;
+//   description: string;
+// }
 
-class CategoriesRepository {
+/**
+ * Implementando a CategoriesRepositoryInterface para estudo do LSP
+ */
+class CategoriesRepository implements CategoriesRepositoryInterface {
   private categories: Category[];
 
   constructor() {
@@ -30,6 +40,10 @@ class CategoriesRepository {
     const category = this.categories.find((category) => category.name === name);
 
     return category;
+  }
+
+  teste(): string {
+    return "Teste";
   }
 }
 
