@@ -1,0 +1,28 @@
+#### SOLID ####
+  - São 5 principios escritos por Robert Martin (Uncle Bob), estão contidos no livro Arquitetura Limpa
+  - São eles:
+    - S => SRP - Single Responsabillity Principle (Principio da Responsabilidade Unica);
+    - O => OCP - Open-Closed Principle (Principio Aberto/Fechado);
+    - L => LSP - Liskov Substitution Principle (Principio da Substituição de Liskov);
+    - I => ISP - Interface Segregation Principle (Principio da Segregação de Interface);
+    - D => DIP - Dependency Inversion Principle (Principio da Inversão de Dependência);
+
+  - No atual momento da nossa aplicação (RENTALX), a rota de criação de novas categorias 
+    (post("/categories")), está tendo muitas responsabilidades, tais quais:
+      - Recebimento de requisição e retorno (responsabilidade principal esperada);
+      - Validação do nome da categoria (não permitindo criação de categorais com mesmo nome);
+      - Chamada do repository responsavel pela manipulação dos dados;
+  
+  - Partindo do 1º principio SRP que diz: "Um módulo deve ter uma e apenas uma razão para mudar"
+  - Vamos reestrutura o arquivo "categories.routes.ts", inicialmente vamos criar um arquivo
+    de service com caminho relativo "services/CreateCategoryService.ts" que ficará responsavel por 
+    realizar a validação do nome e criação da categoria, que por usa vez será utilizado na rota;
+  
+  - Vamos abordar também o DIP que diz: "O código que implementa uma politica de alto nivel
+    não pode dependender de um código que implementa detalhes de baixo nivel". Ou seja, nesse caso
+    nosso service seria o alto nivel e não precisaria saber qual é o tipo do repositorio.
+    Dessa forma nosso service não precisa saber qual é o BD utilizado, ou, se estamos fazendo a
+    manipulação dos dados na memoria, o que ele precisa é exclusivamente do repositório que manipule
+    o dado.
+    Então vamos inverter a dependencia, em vez do service ter a dependencia do repositorio passaremos
+    a responsabilidade para quem chama o service.

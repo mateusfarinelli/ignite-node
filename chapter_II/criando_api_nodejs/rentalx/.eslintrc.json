@@ -29,7 +29,7 @@
         "selector": "interface",
         "format": ["PascalCase"],
         "custom": {
-          "regex": "[A-Z]+Interface",
+          "regex": "[a-zA-Z]+Interface",
           "match": true
         }
       }
