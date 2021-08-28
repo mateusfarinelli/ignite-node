@@ -1,0 +1,8 @@
+#### Continuando o desenvolvimento da aplicação ####
+
+  - Vamos agora criar a entidade especifications;
+  - Para melhorar nossa arquitetura, vamos fazer a reestruturação de nossas pastas;
+  - Inicialmente vamos criar uma pasta modules, e dentro da pasta modules vamos unificar
+    tudo aqui que for referente ao modulo que delimitarmos, nesse caso "cars" e lá
+    teremos models, repositores e services referentes a essa entidade e entidades que
+    a compoem;
