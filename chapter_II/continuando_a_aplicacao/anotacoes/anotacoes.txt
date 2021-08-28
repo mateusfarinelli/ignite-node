@@ -6,3 +6,6 @@
     tudo aqui que for referente ao modulo que delimitarmos, nesse caso "cars" e lá
     teremos models, repositores e services referentes a essa entidade e entidades que
     a compoem;
+  
+  - Nesta aula criamos os arquivos de repository, repositoryInterface, model, e routes 
+    das Specifications, praticamente identicos aos das Categories

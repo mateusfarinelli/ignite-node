@@ -1,6 +1,7 @@
 import express from "express";
 
 import { categoriesRoutes } from "./routes/categories.routes";
+import { specificationsRoutes } from "./routes/specifications.routes";
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
  * só será preciso passar os demais parametros de rota caso necessario
  */
 app.use("/categories", categoriesRoutes);
+app.use("/specifications", specificationsRoutes);
 
 /**
  * Teste de rota para mostrar como utilizar a ferramenta de debug do VSCode
