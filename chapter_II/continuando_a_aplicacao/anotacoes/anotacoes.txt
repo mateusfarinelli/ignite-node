@@ -52,3 +52,5 @@
   - Basicamente nessa aula, só mudamos nossas "interfaces" (ou implementações) contidas na pasta "repositories" para 
     a pasta "repositories/implementations", de modo a deixar nossa estrutura mais organizada;
 
+  - Basicamente nessa aula iremos refatorar também a parte de Specifications assim como fizemos com as Categories, com exceção
+    do Singleton Pattern para o Repository pois até o momento não há necessidade.

@@ -2,7 +2,7 @@ import { Specification } from "../models/Specification";
 import {
   SpecificationRepositoryDTOInterface,
   SpecificationRepositoryInterface,
-} from "./SpecificationRepositoryInterface";
+} from "./implementations/SpecificationRepositoryInterface";
 
 class SpecificationRepository implements SpecificationRepositoryInterface {
   private specifications: Specification[];
