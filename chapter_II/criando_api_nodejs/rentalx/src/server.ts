@@ -1,18 +1,25 @@
 import express from "express";
 
-import { categoriesRoutes } from "./routes/categories.routes";
-import { specificationsRoutes } from "./routes/specifications.routes";
+import { routes } from "./routes";
+// Não sera mais necessário importar rotas aqui;
+// import { categoriesRoutes } from "./routes/categories.routes";
+// import { specificationsRoutes } from "./routes/specifications.routes";
 
 const app = express();
 
 app.use(express.json());
+// Fazendo o import das rotas no arquivo "routes/index.ts"
+app.use(routes);
 
 /**
  * Deixando o "/categories" como path inicial da rota, assim dentro do categoriesRoutes
  * só será preciso passar os demais parametros de rota caso necessario
+ *
+ * As rotas dessa forma foram comentadas pois refatoramos e criamos o arquivo index.ts
+ * possibilitando com que importemos somente o arquivo "routes/index.ts" para utilizar aqui
  */
-app.use("/categories", categoriesRoutes);
-app.use("/specifications", specificationsRoutes);
+// app.use("/categories", categoriesRoutes);
+// app.use("/specifications", specificationsRoutes);
 
 /**
  * Teste de rota para mostrar como utilizar a ferramenta de debug do VSCode

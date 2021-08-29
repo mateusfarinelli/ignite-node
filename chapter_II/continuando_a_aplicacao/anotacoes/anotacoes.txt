@@ -54,3 +54,6 @@
 
   - Basicamente nessa aula iremos refatorar também a parte de Specifications assim como fizemos com as Categories, com exceção
     do Singleton Pattern para o Repository pois até o momento não há necessidade.
+  
+  - Também para melhorar a estrutura de nossas rotas vamos criar um arquivo "index.ts" na nossa pasta "routes" e importa-las
+    direamente lá ao invez de fazermos isso dentro do nosso arquivo "server.ts"
