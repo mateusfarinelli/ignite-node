@@ -30,3 +30,6 @@
     de exportação instanciação e exportação do controller para ser utilizado no arquivo de rotas.
     Nas rotas propriamente ditas, vamos então chamar o método "handle" do nosso controller e passar os parametros
     request e response, retornando o resultado dessa chamada.
+
+  - Nessa aula refatoramos a rota de listagem de categorias deixando no mesmo modelo da aula passada utilizando
+    useCase e Controllers.

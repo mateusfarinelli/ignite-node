@@ -1,12 +1,14 @@
 import { Router } from "express";
 
-import { CategoriesRepository } from "../modules/cars/repositories/CategoriesRepository";
 import { createCategoryController } from "../modules/cars/useCases/createCategory";
+import { listCategoriesController } from "../modules/cars/useCases/listCategories";
 // Não será mais utlizado aqui
 // import { CreateCategoryUseCase } from "../modules/cars/useCases/createCategory/CreateCategoryUseCase";
+// import { CategoriesRepository } from "../modules/cars/repositories/CategoriesRepository";
 
 const categoriesRoutes = Router();
-const categoriesRepository = new CategoriesRepository();
+// Não há necessidade de instanciar o repository pois foram criados controllers e userCases
+// const categoriesRepository = new CategoriesRepository();
 
 /**
  * Cometandos pois a resposabilidade sobre os métodos das categorias passou para o repository
@@ -42,9 +44,10 @@ categoriesRoutes.post("/", (request, response) => {
 });
 
 categoriesRoutes.get("/", (request, response) => {
-  const categories = categoriesRepository.list();
-
-  return response.json(categories);
+  return listCategoriesController.handle(request, response);
+  // Movido para o arquivo ListCategoriesController.ts
+  // const categories = categoriesRepository.list();
+  // return response.json(categories);
 });
 
 export { categoriesRoutes };
