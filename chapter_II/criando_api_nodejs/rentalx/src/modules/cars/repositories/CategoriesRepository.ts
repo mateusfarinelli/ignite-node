@@ -19,8 +19,17 @@ import {
 class CategoriesRepository implements CategoriesRepositoryInterface {
   private categories: Category[];
 
-  constructor() {
+  // Assumindo padrão Singleton (antes INSTANCE não existia e constructor era public)
+  private static INSTANCE: CategoriesRepository;
+  private constructor() {
     this.categories = [];
+  }
+
+  public static getInstance(): CategoriesRepository {
+    if (!CategoriesRepository.INSTANCE) {
+      CategoriesRepository.INSTANCE = new CategoriesRepository();
+    }
+    return CategoriesRepository.INSTANCE;
   }
 
   create({ name, description }: CreatedCtegoryDTOInterface): void {

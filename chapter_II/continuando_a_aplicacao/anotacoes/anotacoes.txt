@@ -33,3 +33,19 @@
 
   - Nessa aula refatoramos a rota de listagem de categorias deixando no mesmo modelo da aula passada utilizando
     useCase e Controllers.
+  
+  - Na aula passada, vimos que a listagem acabava retornando um array vazio devido a instanciação da classe "CategoriesRepository"
+    em dois arquivos distintos, gerando esse evento não esperado;
+    Dessa forma para corrigir esse evento, iremos aprender sobre o Singleton Pattern. Dito isso, oque seria o Singleton Pattern?
+    Acredito que uma boa definição seja:
+      "Singleton Pattern especifica que apenas uma instância da classe pode existir, e esta será utilizada por toda a aplicação. 
+       Dessa forma temos apenas um ponto de acesso central a esta instância da classe.";
+    Portanto antes de sair aplicando Singleton em toda classe do projeto é necessário entender se é necessário, ou se isso realmente
+    deve ser aplicado, dado que essa forma de padrão proporciona ao projeto uma "instancia global" da classe;
+    Agora na prática, vamos ao arqivo "CategoriesRepository.ts" e vamos inicialmente tornar nosso método construtor privado, par que
+    unica e exclusivamente a classe seja capaz de criar uma nova instancia sua;
+    Posteriormente vamos adicionar uma constante privada chamada "INSTANCE" que será do tipo "CategoriesRepository"
+    que servirá como um validador;
+    E então vamos criar o método publico getInstance que irá validar se já existe uma instancia do repositorio e caso não exista ele irá
+    instancia-lo ou então retornar a instancia já existente;
+
