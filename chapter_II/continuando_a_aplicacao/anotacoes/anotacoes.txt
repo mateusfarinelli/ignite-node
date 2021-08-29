@@ -48,4 +48,7 @@
     que servirá como um validador;
     E então vamos criar o método publico getInstance que irá validar se já existe uma instancia do repositorio e caso não exista ele irá
     instancia-lo ou então retornar a instancia já existente;
+  
+  - Basicamente nessa aula, só mudamos nossas "interfaces" (ou implementações) contidas na pasta "repositories" para 
+    a pasta "repositories/implementations", de modo a deixar nossa estrutura mais organizada;
 

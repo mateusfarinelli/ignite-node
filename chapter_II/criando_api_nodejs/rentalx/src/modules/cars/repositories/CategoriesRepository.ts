@@ -2,7 +2,7 @@ import { Category } from "../models/Category";
 import {
   CategoriesRepositoryInterface,
   CreatedCtegoryDTOInterface,
-} from "./CategoriesRepositoryInterface";
+} from "./implementations/CategoriesRepositoryInterface";
 
 // DTO => Data Transfer Object -> Objeto responsavel por fazer a transferencia de dados entre uma camada e outra
 /**

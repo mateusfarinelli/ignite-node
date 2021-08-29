@@ -2,7 +2,7 @@ import { Category } from "../src/modules/cars/models/Category";
 import {
   CategoriesRepositoryInterface,
   CreatedCtegoryDTOInterface,
-} from "../src/modules/cars/repositories/CategoriesRepositoryInterface";
+} from "../src/modules/cars/repositories/implementations/CategoriesRepositoryInterface";
 
 class PostgresCategoriesRepository implements CategoriesRepositoryInterface {
   findByName(name: string): Category {
