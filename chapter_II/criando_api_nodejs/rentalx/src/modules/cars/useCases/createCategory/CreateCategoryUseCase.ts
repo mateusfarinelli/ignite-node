@@ -3,7 +3,7 @@
  */
 // import { CategoriesRepository } from "../repositories/CategoriesRepository";
 
-import { CategoriesRepositoryInterface } from "../repositories/CategoriesRepositoryInterface";
+import { CategoriesRepositoryInterface } from "../../repositories/CategoriesRepositoryInterface";
 
 // Recebendo as informações necessárias conforme DTO criado no repository
 interface RequestInterface {
@@ -22,7 +22,7 @@ interface RequestInterface {
  *      Dependency Inversion Principle (veja nas anotações)
  */
 
-class CreateCategoryService {
+class CreateCategoryUseCase {
   // "Implementado o DIP"
   constructor(private categoriesRepository: CategoriesRepositoryInterface) {}
 
@@ -39,4 +39,4 @@ class CreateCategoryService {
   }
 }
 
-export { CreateCategoryService };
+export { CreateCategoryUseCase };

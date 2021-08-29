@@ -8,4 +8,25 @@
     a compoem;
   
   - Nesta aula criamos os arquivos de repository, repositoryInterface, model, e routes 
-    das Specifications, praticamente identicos aos das Categories
+    das Specifications, praticamente identicos aos das Categories.
+  
+  - Nesas aula vamos dividir ainda mais responsabilidades na nossa aplicação.
+    Os arquivos de rota ainda possuem muitas responsabilidades, por exemplo chamadas a
+    repositories e services.
+    Vamos então colocar todas essas chamadas dentro de controllers. Controllers nesse contexto
+    serão classes que recebem a requisição re retornam a requisição.
+    Dessa forma podemos nos perguntar - Então qual a diferença entre controller e rota? - E a resposta
+    é basicamente que a rota vai ser unicamente responsavel por receber a requisição e retorna-la
+    enquanto os controllers vão receber, processar e então devolver essa chamada.
+    Como sugestão da instrutora, criamos a pasta "useCases" onde iremos separar cada regra de 
+    negocio especifica (no nosso caso o createCategory) e criar uma pasta referente, colocando todos
+    os arquivos que atuam sobre o useCase. Portanto vamos começar criando o "CreateCategoryController.ts"
+    na pasta "useCases/createCategory".
+    Antes de iniciar a construção do código do Controller, vamos mover o service "CreateCateogyService.ts"
+    para a pasta "useCases/createCategory" e renomea-lo para "CreateCategoryUseCase.ts" e fazer as corre-
+    ções necessárias para seu funcionamento.
+    O controller basicamente consiste no código antes presente no arquivo de rotas, fazendo os devidos ajustes.
+    Criamos também o arquivo "index.ts" dentro da pasta "useCases/createCategory" que servirá como um arquivo
+    de exportação instanciação e exportação do controller para ser utilizado no arquivo de rotas.
+    Nas rotas propriamente ditas, vamos então chamar o método "handle" do nosso controller e passar os parametros
+    request e response, retornando o resultado dessa chamada.

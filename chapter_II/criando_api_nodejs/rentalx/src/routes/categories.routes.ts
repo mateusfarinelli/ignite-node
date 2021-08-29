@@ -1,7 +1,9 @@
 import { Router } from "express";
 
 import { CategoriesRepository } from "../modules/cars/repositories/CategoriesRepository";
-import { CreateCategoryService } from "../modules/cars/services/CreateCategoryService";
+import { createCategoryController } from "../modules/cars/useCases/createCategory";
+// Não será mais utlizado aqui
+// import { CreateCategoryUseCase } from "../modules/cars/useCases/createCategory/CreateCategoryUseCase";
 
 const categoriesRoutes = Router();
 const categoriesRepository = new CategoriesRepository();
@@ -13,14 +15,13 @@ const categoriesRepository = new CategoriesRepository();
 // import { Category } from "../models/Category";
 
 categoriesRoutes.post("/", (request, response) => {
-  const { name, description } = request.body;
-
-  // SRP + DPI para criação da categoria
-  const createCategoryService = new CreateCategoryService(categoriesRepository);
-  createCategoryService.execute({ name, description });
-
-  return response.status(201).send();
-
+  return createCategoryController.handle(request, response);
+  // Código movido para o arquivo CreateCategoryController.ts
+  // const { name, description } = request.body;
+  // // SRP + DPI para criação da categoria
+  // const createCategoryService = new CreateCategoryUseCase(categoriesRepository);
+  // createCategoryService.execute({ name, description });
+  // return response.status(201).send();
   // Validação de categoria por nome
   /**
    * Trecho de código movido para "services/CreateCategoryService.ts"
@@ -30,7 +31,6 @@ categoriesRoutes.post("/", (request, response) => {
   //   return response.status(400).json({ error: "Category already exists!" });
   // }
   // categoriesRepository.create({ name, description });
-
   // Utilizando o construtor da classe Category
   /**
    * Trecho de código movido para o CategoriesRepository para melhorar o encapsulamento de código,
