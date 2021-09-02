@@ -2,6 +2,7 @@ import { response, Router } from "express";
 import multer from "multer";
 
 import { createCategoryController } from "../modules/cars/useCases/createCategory";
+import { importCategoryController } from "../modules/cars/useCases/importCategory";
 import { listCategoriesController } from "../modules/cars/useCases/listCategories";
 // Não será mais utlizado aqui
 // import { CreateCategoryUseCase } from "../modules/cars/useCases/createCategory/CreateCategoryUseCase";
@@ -77,9 +78,14 @@ categoriesRoutes.post(
   "/import",
   uploadConfigs.single("file"),
   (request, response) => {
-    const { file } = request;
-    console.log(file);
-    return response.send();
+    /**
+     * Trecho de código movido para ImportCategoryController.ts
+     */
+    // const { file } = request;
+    // console.log(file);
+    // return response.send();
+
+    return importCategoryController.handle(request, response);
   }
 );
 

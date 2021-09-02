@@ -23,3 +23,7 @@
   um arquivo;
 - Por fim veremos que o arquivo foi enviado para o diretorio "tmp" porem com um nome gerado
   randomicamente e diferente daquele do arquivo original, e também sem extensão.
+
+- Vamos criar agora o UseCase "ImportCategory" (diretorio, arquivo index, arquivos 
+  UseCase e Controller) conforme já visto anteriormente;
+  
