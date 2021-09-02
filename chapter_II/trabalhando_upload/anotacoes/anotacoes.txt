@@ -1,1 +1,25 @@
-- Vamos iniciar o módulo de uploads
+#### Uploads de arquivos com multer ####
+- Nessa aula vamos iniciar o aprendizado de uploads de arquivos
+  e para isso iremos utilizar a biblioteca multer, que possibilita fazer uploads de
+  um ou varios arquivos. Link do repositório npm da lib: https://www.npmjs.com/package/multer;
+
+- Então agora vamos adicionar a depêndencia multer e os types no nosso projeto com os comandos 
+  "npm install multer" "npm install --save-dev @types/multer" ou "yarn add multer @types/multer"
+  "yarn add @types/multer -D";
+- O multer atuará basicamente como um middler da nossa rota, sendo o responsavel por receber o arquivo
+  na requisição e possibilitar sua recuperação;
+- Vamos então nas nossa "categoriesRoutes" criar a rota "/import" e também importar o multer para
+  este arquivo;
+- Criamos uma variavel para salvar as configurações iniciais que iremos utilizar;
+- E também criamos a pasta "tmp" na raiz de nosso projeto, onde os arquivos recebidos serão alocados
+  temporariamente;
+- Fazemos a chamada da variavel de configuração como middleware da rota invocando o método "single"
+  que será responsavel por aceitar somente um unico arquivo por essa rota;
+- Para testar a rota e o upload, no insomnia criaremos uma nova requisição do tipo "POST" sendo
+  a propriedade "Body" um "Multpart Form";
+  Com essa requisição criada, na aba "Multipart Form" iremos colocar a string que passamos como
+  parametro para o método single do middleware no campo "name" e alterar o campo "value" para
+  "file", fazendo com que o caixa de seleção padrão de uploads seja aberta e possamos selecionar
+  um arquivo;
+- Por fim veremos que o arquivo foi enviado para o diretorio "tmp" porem com um nome gerado
+  randomicamente e diferente daquele do arquivo original, e também sem extensão.

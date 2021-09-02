@@ -1,4 +1,5 @@
-import { Router } from "express";
+import { response, Router } from "express";
+import multer from "multer";
 
 import { createCategoryController } from "../modules/cars/useCases/createCategory";
 import { listCategoriesController } from "../modules/cars/useCases/listCategories";
@@ -7,6 +8,7 @@ import { listCategoriesController } from "../modules/cars/useCases/listCategorie
 // import { CategoriesRepository } from "../modules/cars/repositories/CategoriesRepository";
 
 const categoriesRoutes = Router();
+
 // Não há necessidade de instanciar o repository pois foram criados controllers e userCases
 // const categoriesRepository = new CategoriesRepository();
 
@@ -49,5 +51,36 @@ categoriesRoutes.get("/", (request, response) => {
   // const categories = categoriesRepository.list();
   // return response.json(categories);
 });
+
+/**
+ * Trabalhando com multer
+ *
+ * Varivel que recebe configurações iniciais do multer;
+ *
+ * Caso o arquivo fosse somente para leitura poderiamos deixar somente a variavel recebendo
+ * o valor a função;
+ *
+ * Neste caso iremos salvar temporariamente o arquivo no nosso servidor;
+ */
+const uploadConfigs = multer({
+  dest: "./tmp",
+});
+
+/**
+ * Rota que fará o upload do arquivo
+ *
+ * Passamos a variavel que criamos com as configurações inicais do multer como middleware;
+ * E também chamamos o método single que será responsavel por receber um unico arquivo nessa
+ * requisição;
+ */
+categoriesRoutes.post(
+  "/import",
+  uploadConfigs.single("file"),
+  (request, response) => {
+    const { file } = request;
+    console.log(file);
+    return response.send();
+  }
+);
 
 export { categoriesRoutes };
