@@ -44,4 +44,8 @@
 
 - Nessa aula vamos começar a salvar os dados que estamos recebendo pelo arquivo no nosso banco de
   dados (que nesse caso é o nosso array).
-- 
+
+- Nessa aula vamos então inserir de fato as categorias recebidas no arquivo no banco de dados;
+- Para isso no nosso ImportCategoryUseCase vamos fazer um map no array categories da 
+  função execute, fazendo a verificação no repositório se a categoria já existe usando a
+  função findByName() e então fazer a criação da categoria;

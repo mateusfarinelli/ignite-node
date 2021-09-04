@@ -27,7 +27,18 @@ class ImportCategoryUserCase {
   async execute(file: Express.Multer.File): Promise<void> {
     const categories = await this.loadCategories(file);
 
-    console.log(categories);
+    /**
+     * Salvando a categoria vinda do arquivo no banco.
+     */
+    categories.map(async (category) => {
+      const { name, description } = category;
+
+      const existCategory = this.categoriesRepository.findByName(name);
+
+      if (!existCategory) {
+        this.categoriesRepository.create({ name, description });
+      }
+    });
 
     /**
      * Código movido para função "loadCategories()" deste arquivo
