@@ -1,6 +1,9 @@
 import express from "express";
+import swaggerUi from "swagger-ui-express";
 
 import { routes } from "./routes";
+import swaggerFile from "./swagger.json";
+
 // Não sera mais necessário importar rotas aqui;
 // import { categoriesRoutes } from "./routes/categories.routes";
 // import { specificationsRoutes } from "./routes/specifications.routes";
@@ -8,6 +11,12 @@ import { routes } from "./routes";
 const app = express();
 
 app.use(express.json());
+
+/**
+ * Iniciando o swagger
+ */
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
 // Fazendo o import das rotas no arquivo "routes/index.ts"
 app.use(routes);
 

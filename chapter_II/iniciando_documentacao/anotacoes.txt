@@ -4,3 +4,17 @@
 - Swagger é uma ferramenta para desenvolvimento da documentação da API, permitindo ainda que
   seja possível testar a aplicação diretamente pelo browser.
 
+- Vamos iniciar o desenvolvimento da nossa documentação instalando o swagger com o comando:
+  "npm install swagger-ui-express" e "npm install --save-dev @types/swagger-ui-express;
+                ou
+  "yarn add swagger-ui-express" e "yarn add @types/swagger-ui-express -D";
+- Agora no arquivo "server.ts" vamos fazer o import da lib do swagger e antes da rotas
+  vamos criar um "servidor" para o swagger, passando uma rota como parametro e dois middlewares
+  o primeiro sendo "swagger.serve" e o segundo sendo "swaggerUi.setup()", para o método setup
+  iremos passar um json contendo todas as informações da nossa aplicação;
+  Essas informações ficaram armazenadas no arquivo "swagger.json" na raiz da nossa aplicação;
+  Importamos o arquivo swagger.json e passamos como parametro para o metodo setup() é importante
+  adicionar o pametro ""resolveJsonModule": true" no arquivo "tsconfig.json"
+  Agora no arquivo swagger.json, vamos passar algumas informações iniciais, como trata-se
+  de um arquivo json, não consigo fazer comentarios, então todo o código será comentado aqui
+  se necessário.
