@@ -6,8 +6,8 @@
 - Então agora vamos adicionar a depêndencia multer e os types no nosso projeto com os comandos 
   "npm install multer" "npm install --save-dev @types/multer" ou "yarn add multer @types/multer"
   "yarn add @types/multer -D";
-- O multer atuará basicamente como um middler da nossa rota, sendo o responsavel por receber o arquivo
-  na requisição e possibilitar sua recuperação;
+- O multer atuará basicamente como um middler da nossa rota, sendo o responsavel por receber o 
+  arquivo na requisição e possibilitar sua recuperação;
 - Vamos então nas nossa "categoriesRoutes" criar a rota "/import" e também importar o multer para
   este arquivo;
 - Criamos uma variavel para salvar as configurações iniciais que iremos utilizar;
@@ -28,15 +28,20 @@
   UseCase e Controller) conforme já visto anteriormente;
 
 - Nessa aula iremos conhecer o conceito de stream.
-- O stream permite que um arquivo seja lido em partes, diferentemente da abordagem convencional que teriamos
-  com o "readfile" nativo do node, onde o readfile le todo o arquivo antes de iniciar o processamento.
+- O stream permite que um arquivo seja lido em partes, diferentemente da abordagem convencional que 
+  teriamos com o "readfile" nativo do node, onde o readfile le todo o arquivo antes de iniciar 
+  o processamento;
 - Iniciamos importando a lib "fs" (filesystem) nativa do node. Essa lib possui um método chamado
-  "createReadStream" que cria um stream a partir da leitura de um arquivo, então passamos o "path" do nosso
-  arquivo recebido pelo upload para esse método e guardamos o retorno e uma variavel.
-- Para que possamos ler o CSV de maneira mais simples (poderia ser feito manualmente), vamos instalar a
-  depêndencia csv-parser com o comando "npm install csv-parse" ou "yarn add csv-parse".
+  "createReadStream" que cria um stream a partir da leitura de um arquivo, então passamos o "path"
+   do nosso arquivo recebido pelo upload para esse método e guardamos o retorno e uma variavel;
+- Para que possamos ler o CSV de maneira mais simples (poderia ser feito manualmente), vamos 
+  instalar a depêndencia csv-parser com o comando "npm install csv-parse" ou "yarn add csv-parse";
   Então criamos uma variavel que recebe o retorno da função "csvParse()" e passamos essa variavel
   para o nosso stream utilizando o método "pipe";
 - Por fim fazemos o log dos dados utilizando o método "on()" passando como parametro a propriedade
   "data" chamando um callback que retorna os dados lidos (no caso as linhas) e podemos logar cada
   linha do arquivo
+
+- Nessa aula vamos começar a salvar os dados que estamos recebendo pelo arquivo no nosso banco de
+  dados (que nesse caso é o nosso array).
+- 
