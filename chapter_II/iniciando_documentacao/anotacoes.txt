@@ -1,0 +1,6 @@
+#### Iniciando a documentação ####
+
+- Nessa aula iremos conhecer o swagger e aborda-lo durante o capitulo;
+- Swagger é uma ferramenta para desenvolvimento da documentação da API, permitindo ainda que
+  seja possível testar a aplicação diretamente pelo browser.
+
