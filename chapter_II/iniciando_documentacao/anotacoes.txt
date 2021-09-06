@@ -18,3 +18,10 @@
   Agora no arquivo swagger.json, vamos passar algumas informações iniciais, como trata-se
   de um arquivo json, não consigo fazer comentarios, então todo o código será comentado aqui
   se necessário.
+
+- Vamos agora começar realmente a criação da nossa documentação iniciando pelas rotas de
+  categories;
+  Iniciamos então a criação do "path" da nossa rota POST para novas categorias e criamos o
+  path segundo a documentação;
+  Foi passado também uma propriedade chamda "tag" que permite com que criemos um conjunto
+  de rotas para aquela tag deixando nossa documentação ainda mais organizada;
