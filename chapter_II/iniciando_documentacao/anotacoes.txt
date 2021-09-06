@@ -25,3 +25,9 @@
   path segundo a documentação;
   Foi passado também uma propriedade chamda "tag" que permite com que criemos um conjunto
   de rotas para aquela tag deixando nossa documentação ainda mais organizada;
+
+- Nessa aula daremos sequencia em nossa documentação com a listagem das categorias;
+  Basicamente a estrutura é a mesma do post, com a diferneça de que não tem requestBody
+  para a rota de listagem, dessa forma passamos somente a propriedade responses,
+  entretanto fazemos a definição do esquema na prórpia response, assim como no requestBody
+  do método post;
