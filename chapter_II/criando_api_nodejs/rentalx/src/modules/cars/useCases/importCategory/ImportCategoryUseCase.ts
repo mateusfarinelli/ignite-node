@@ -92,6 +92,11 @@ class ImportCategoryUserCase {
           });
         })
         .on("end", () => {
+          /**
+           * Removendo o arquivo temporario que é lido para fazer o import das categorias
+           * por arquivos CSV.
+           */
+          fs.promises.unlink(file.path);
           resolve(categories);
         })
         .on("error", (erro) => {

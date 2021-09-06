@@ -31,3 +31,8 @@
   para a rota de listagem, dessa forma passamos somente a propriedade responses,
   entretanto fazemos a definição do esquema na prórpia response, assim como no requestBody
   do método post;
+
+- Nessa aula (ultima do módulo), fizemos um pequeno ajustes na rota de import de categorias
+  por arquivos CSV;
+  Anteriormente o import salava um arquivo que era lido, agora um método para remoção do
+  arquivo foi adicionado, assim após a leitura, o arquivo não é mais salvo no servidor;
