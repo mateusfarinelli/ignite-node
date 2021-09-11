@@ -1,0 +1,32 @@
+#### INICIANDO COM DOCKER ####
+
+- Guia de instalação: 
+  - https://www.notion.so/Docker-e-Docker-Compose-16771f2ceefe4a05a8c29df4ca49e97a;
+
+- Nessa aula veremos uma breve introdução ao Docker, "o que é", e 
+  "qual problema ele busca resolver" e "como podemos utilziar ele na nossa aplicação";
+  - O que é?
+    - Ferramenta que auxiliar na criação de container;
+    - Container: podemos entender como um ambiente isolado na nossa máquina/servidor;
+    - Imagens: instruções para criação de containers;
+    - O que "roda" localmente "roda" em produção: conseguimos "emular" um ambiente de pro-
+      dução no nosso ambiente local;
+
+  - Uma rápida comparação entre uma infra sem e com docker;
+    - SEM DOCKER:
+      - A infra proriamente dita que é a camada mais baixa da nossa comparação
+      - Um sistema de VM (Hypervisor, VMWare, entre outros) que é a interface entre a infra
+        e nossas máquinas virtuais;
+      - E por fim as máquinas virutais de cada serviço, contendo OS, configurações e os
+        serviços especificos de cada VM;
+
+    - COM DOCKER:
+      - A infra semelhante ao ambiente sem docker;
+      - O OS do host (no meu caso Windows por ser local);
+      - O Docker
+      - Os containers criados com o docker, onde cada container representaria um serviço,
+        ou, se compararmos com o ambiente sem docker, as VMs. Entretanto é precisso ressaltar
+        que quando utilizamos docker temos o OS compartilhado, bem como suas configurações
+        sem que precisemos configurar e instalar OS e serviços, apenas aplicando a imagem docker
+        respectiva;
+      
