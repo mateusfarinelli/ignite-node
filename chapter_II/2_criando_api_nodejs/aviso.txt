@@ -1,0 +1,3 @@
+#### IMPORTANTE ####
+- O projeto "rentalx" que criamos e utilizamos no capitulo 2, será utilizado no capitulo 3
+  portanto foi moivod para a raiz desse repositório;

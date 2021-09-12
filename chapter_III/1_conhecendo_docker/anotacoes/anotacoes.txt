@@ -5,6 +5,7 @@
 
 - Nessa aula veremos uma breve introdução ao Docker, "o que é", e 
   "qual problema ele busca resolver" e "como podemos utilziar ele na nossa aplicação";
+
   - O que é?
     - Ferramenta que auxiliar na criação de container;
     - Container: podemos entender como um ambiente isolado na nossa máquina/servidor;
@@ -29,4 +30,36 @@
         que quando utilizamos docker temos o OS compartilhado, bem como suas configurações
         sem que precisemos configurar e instalar OS e serviços, apenas aplicando a imagem docker
         respectiva;
-      
+
+- Vamos agora iniciar então a criação do nosso primeiro container e conhecer um pouco sobre 
+  Dockerfile:
+  - Então como ja visto, o Docker veio para que pudessemos ter um padrão entre o ambiente de 
+    desenvolvimento e o ambiente de produção, dessa forma muitas instalações e configurações
+    podem ser "passadas" para o Docker;
+  - Vamos então iniciar nossa prática criando o arquivo "Dockerfile" na raiz do projeto que
+    iremos usar para estudo (neste caso usaremos o rentalx criado na aula passada);
+  - Também instalamos a extenção "Docker" da MS para nos ajudar com snipets;
+  - Para saber quais imagens disponiveis o docker possui, podemos utilizar o link:
+      - https://hub.docker.com/search;
+  - Agora que ja sabemos todos esses atalhos, vamos para a Dockerfile criada e vamos inserir
+    a imagem do "node" para o container;
+  - Passamos também o nosso "WORKDIR" (onde ficaram as informações necessárias)
+  - E também copiar o arquivo "package.json para" dentro desse WORKDIR
+  - Criamos também um arquivo ".dockerignore" para que arquivos desnecessários não sejam
+    inseridos em nosso container já que queremos que o container seja responsavel por baixar
+    as dependências e instala-las;
+  - Posteriormente fazemos a copia de todos os arquivos para o container;
+  - Liberamos a porta que iremos utilizar;
+  - E por fim, permitimos o uso do comando "npm run dev";
+  - Com o Dockerfile criado, dentro da raiz do projeto onde o Dockerfile se encontra, vamos rodar
+    o comando "docker build -t <nome_da_imagem> <diretorio_do_dockerfile>", ficando:
+      -  "docker build -t rentalx ."
+  - Executando o comando "docker ps" que lista as imagens que estão rodando, veremos um retorno vazio
+    pois nossa imagem apenas foi criada e não inicializada;
+  - Para rodar nossa imagem iremos executar o comando "docker run -p <porta_local>:<porta_container> <nome_imagem>"
+    ficando para nosso exemplo:
+      - "docker run -p 3333:3333 rentalx";
+    - Lembrando que a opção "-p" realiza um mapeamento das portas por se tratar de uma especie de "VM";
+  - Podemos acessar nosso container via terminal, utilizando o comando:
+      - "docker exec -it <nome_container> /bin/bash";
+    - Dessa forma iremos acessar o container;
