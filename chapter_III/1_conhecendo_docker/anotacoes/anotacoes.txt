@@ -90,3 +90,24 @@
     Para poder ver os logs integrais em tempo real podemos usar o comando:
       - "docker-compose logs <container_name> -f"
   
+  - Vamos conhecer agora alguns comandos para o docker/docker-compose, bem como alguns cuidados
+    que devemos ter com esses comandos;
+    # DOCKER: 
+      - "docker ps": listagem dos container online;
+        - "docker ps -a": lista todos os containers (online e offline);
+      - "docker rm <container_id> ou <container_name>": remove um container, para executar esse 
+        comando é preciso que o container esteja pausado, ou seja, não esteja online;
+      - "docker start <container_id> ou <container_name>";
+      - "docker stop <container_id> ou <container_name>";
+      - "docker exec -it <container_id> ou <container_name> /bin/bash": acessa o container,
+        como se fosse um ssh de uma VM;
+      - "docker logs <container_id> ou <container_name>": mostra os ultimos logs gerados;
+        - passando a flag "-f" é possível acompanhar os logs em tempo real;
+        
+    # DOCKER-COMPOSE:
+      - "docker-compose up": cria e sobe o container com log parcial;
+        - podemos ainda passar a flag "-d" para subir o container em background sem apresentação
+          de nenhum log no nosso console;
+      - "docker-compose start": iniciar o container já criado;
+      - "docker-compose stop <container_id> ou <container_name>": para o container;
+      - "docker-compose down <container_id> ou <container_name>": é analago ao "docker rm";
