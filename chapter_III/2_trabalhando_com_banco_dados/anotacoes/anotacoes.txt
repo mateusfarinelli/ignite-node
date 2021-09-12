@@ -35,5 +35,12 @@
     - Essa parte foi um pouco trabalhosa por conta de alguns erros, ou comportamentos inesperados
       por isso é muito importante também seguir esse documento:
         - https://www.notion.so/Refatora-o-Docker-com-TypeORM-4500fc0d075349ac9b97d670e734d41b;
-      
+  
+  - Nessa aula vamos ver como fazer o gerenciamento do nosso banco de dados através do ORM, ou seja,
+    como criar, editar e remover tabelas e etc;
+    - Com isso vamos estudar um pouco o conceito de "migrations". Migrations são como uma forma de
+      versionamento do nosso banco de dados, ou seja, criamos as tabelas dentro da propria aplicação;
+    - Deixando as informações das tabelas mais clara e disponivel para todos os contribuintes do
+      projeto;
+  
 
