@@ -47,6 +47,7 @@ categoriesRoutes.post("/", (request, response) => {
 });
 
 categoriesRoutes.get("/", (request, response) => {
+  console.log("Teste reload Docker");
   return listCategoriesController.handle(request, response);
   // Movido para o arquivo ListCategoriesController.ts
   // const categories = categoriesRepository.list();

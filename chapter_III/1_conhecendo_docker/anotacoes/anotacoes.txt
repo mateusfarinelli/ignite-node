@@ -63,3 +63,30 @@
   - Podemos acessar nosso container via terminal, utilizando o comando:
       - "docker exec -it <nome_container> /bin/bash";
     - Dessa forma iremos acessar o container;
+
+- Vamos ver agora um pouco sobre o docker-compose;
+  - Docker Compose é (uma ferramenta) basicamente um orquestrador de containers, ou seja, 
+    um tipo de gerenciador, que permite que façamos algumas configurações como definir serviços
+    que iremos rodar, dependências de serviços, varaiveis de ambiente e outras;
+  
+  - Vamos iniciar nossa pratica criando na raiz de nosso projeto, ou seja, mesmo nivel que Criamos
+    o Dockerfile o arquivo "docker-compose.yml"
+  - Aqui iremos fazer algumas configurações dentre elas a versão do docker-compose que estamos usando
+    para isso é importante acessar o link https://docs.docker.com/compose/compose-file/ e verificar
+    qual a versão mais recente conforme sua versão do docker (usar o comando docker --version para 
+    saber);
+  - Então fazemos as configurações passando as propriedades:
+    - app: que recebe as informações sobre a aplicação;
+    - container_name: que recebe o nome que utilziara para criar e gerenciar o container;
+    - ports: que recebe o mapeamento das portas, entre o local e o container;
+    - volumes: que é o mapeamento entre dos diretorios onde o projeto se encontra em relação
+      ao caminho relativo ao arquivo e o diretorio onde será hospedado no container;
+  - Dessa forma teremos então o container rodando e também fazendo o hot reload;
+  - No windows é preciso adicionar a flag "--pol" no script "dev" no "package.json" para que
+    o hot reload funcione;
+  - Para que não fique logando todos os eventos podemos iniciar nosso servidor atráves do comando:
+      - "docker-compose up -d"
+    Assim container segue sendo executado mas sem printar no console o log;
+    Para poder ver os logs integrais em tempo real podemos usar o comando:
+      - "docker-compose logs <container_name> -f"
+  
