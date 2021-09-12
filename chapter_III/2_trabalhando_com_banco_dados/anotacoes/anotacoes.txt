@@ -4,5 +4,27 @@
   - Utilização do drive nativo do banco/linguagem;
   - Utilização de um query builder (exemplo o knex.js);
   - Utilização de um ORM (Sequelize e TypeORM por exemplo);
-
   - Nesse projeto iremos utilizar o TypeORM;
+    - Link oficial do TypeORM: https://typeorm.io/#/
+
+- Vamos então iniciar a instalação e configuração do TypeORM em nosso projeto;
+  - Inicialmente instalamos as depêndencias do typeorm e do reflect-metadata;
+    - "npm install typeorm reflect-metadata";
+  - Segundo a instrutora não precisamos instalar os tipos "@types" (entretanto resalvo que
+    a instalação dos tipos está descrita na documentação da biblioteca);
+  - Passamos então a instalação do driver do banco que iremos utilizar;
+    - Aqui tentarei fazer diferente, no trabalho utilizo o MSSQL então seguirei com ele,
+      (mas a instrutora irá utilizar o Postgres):
+      - "npm install mssql";
+  - Posteiromente no arquivo "tsconfig.json" precisamos habilitar (como true), as
+    propriedades:
+      - experimentalDecorators;
+      - emitDecoratorMetadata;
+  - Então criamos o diretório "database/" em "src/" e dentro dele criamos o "index.ts",
+    dessa forma iremos iniciar nossa conexão da maneira mais simples que é utilizando
+    o método createConnection do TypeORM;
+  - Dentro do "server.ts" apenas importamos o database/index.ts;
+  - Na raiz do projeto criamos o arquivo "ormconfig.json" passando algumas propriedades,
+    conforme instrução da documentação para o tipo de extensão selecionada;
+  - Agora como precisamos criar o banco, bem como usuario e senha, iremos prosseguir para
+    a próxima aula e verificar como criar um container para o banco;

@@ -1,0 +1,9 @@
+{
+  "name": "development",
+  "type": "mssql",
+  "host": "localhost",
+  "username": "",
+  "password": "",
+  "database": "",
+  "port": 3306
+}
