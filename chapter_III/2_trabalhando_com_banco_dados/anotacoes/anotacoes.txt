@@ -1,0 +1,8 @@
+### Trabalhando com Banco de Dados ###
+
+- Quando trabalhamos com banco de dados em uma aplicação, temos 3 possibilidades:
+  - Utilização do drive nativo do banco/linguagem;
+  - Utilização de um query builder (exemplo o knex.js);
+  - Utilização de um ORM (Sequelize e TypeORM por exemplo);
+
+  - Nesse projeto iremos utilizar o TypeORM;
