@@ -1,10 +1,36 @@
-version: "3.8"
+version: "3.9"
 
 services:
+  database:
+    image: postgres
+    container_name: database_ignite
+    restart: always
+    ports: 
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=database_ignite
+      - POSTGRES_DB=rentalx
+    volumes:
+      - pgdata:/data/postgres
+
+
   app:
     build: .
     container_name: rentalx
+    restart: always
     ports: 
       - 3333:3333
+      - 9229:9229 #Você pode inserir essa porta tbm pra poder usar o debug
     volumes: 
       - .:/usr/app
+    links: 
+      - database
+    depends_on:
+      - database
+
+
+
+volumes:
+  pgdata:
+    driver: local

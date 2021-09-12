@@ -12,10 +12,8 @@
     - "npm install typeorm reflect-metadata";
   - Segundo a instrutora não precisamos instalar os tipos "@types" (entretanto resalvo que
     a instalação dos tipos está descrita na documentação da biblioteca);
-  - Passamos então a instalação do driver do banco que iremos utilizar;
-    - Aqui tentarei fazer diferente, no trabalho utilizo o MSSQL então seguirei com ele,
-      (mas a instrutora irá utilizar o Postgres):
-      - "npm install mssql";
+  - Passamos então a instalação do driver do banco que iremos utilizar:
+      - "npm install pg";
   - Posteiromente no arquivo "tsconfig.json" precisamos habilitar (como true), as
     propriedades:
       - experimentalDecorators;
@@ -28,3 +26,14 @@
     conforme instrução da documentação para o tipo de extensão selecionada;
   - Agora como precisamos criar o banco, bem como usuario e senha, iremos prosseguir para
     a próxima aula e verificar como criar um container para o banco;
+
+  - Agora veremos como criar um container para o banco de dados;
+  - No nosso arquivo docker-compose.yml vamos adicionar o nosso banco de dados
+    - Para isso logo acima do app (já que o app depende do banco) adicionamos o serviço
+      database_ignite, recebendo como parametro para a propriedade "image" o nome da imagem e
+      demais configurações;
+    - Essa parte foi um pouco trabalhosa por conta de alguns erros, ou comportamentos inesperados
+      por isso é muito importante também seguir esse documento:
+        - https://www.notion.so/Refatora-o-Docker-com-TypeORM-4500fc0d075349ac9b97d670e734d41b;
+      
+
