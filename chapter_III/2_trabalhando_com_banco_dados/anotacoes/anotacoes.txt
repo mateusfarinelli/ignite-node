@@ -43,4 +43,31 @@
     - Deixando as informações das tabelas mais clara e disponivel para todos os contribuintes do
       projeto;
   
+  - Visto a introdução as migrations na aula passada, vamos dar inicio ao estudo pratico dessa
+    ferramenta.
+    - Iniciamos criando o script "typeorm" no nosso package.json, de modo a deixar o typeorm-cli
+      disponivel para nossa aplicação com o comando:
+        - "ts-node-dev ./node_modules/typeorm/cli";
+    - Para utilizar o script precisamos utilizar o "npx" logo o comando para utilizar a cli ficará:
+      - "npm run typeorm -- -[parâmetro]";
+    - Agora criamos o diretorio "migrations" dentro da pasta "database" que é onde ficarão os
+      arquivos de migrations gerados pelo cli;
+    - Precisamos ainda adicionar o objeto "cli" com a propriedade "migrationsDir" no arquivo
+      ormconfig.json, passando como valor o caminho relativo do diretório de migrations;
+    - Agora para criar a nossa migration de categorias vamos usar o comando:
+      -"npm typeorm migration:create -- -n CreateCategories";
+    - Com o arquivo gerado passamos as configurações necessárias de acordo com a documentação;
+    - Para que a tabela seja criada no banco, antes de rodar o devido comando, vamos passar
+      a propriedade "migrations" para o arquivo ormconfig.json com o caminho relativo do
+      nosso diretorio de migrations e finalizar chamando qualquer arquivo terminado em "*.ts"
+      nesse diretório (qualquer = *);
+    - E agora em nosso terminal romados o comando responsavel por criar nossa tabela no banco:
+      -"npm typeorm migration:run"
+    - Para verificar basta entrar na interface de gerenciamento do banco de dados e verificar
+      se a tabela "categories" foi criada, bem como a tabela "migrations" e ainda verificar
+      se dentro da tabela migrations existe um registro contendo os campos "timestamps" e "name"
+      referentes a tabela criada.
+    - Caso seja necessário executar o método "down" da migration basta executar no terminal
+      o comando:
+        - "npm run typeorm migration:revert"
 
