@@ -1,9 +1,15 @@
 import { response, Router } from "express";
 import multer from "multer";
 
-import { createCategoryController } from "../modules/cars/useCases/createCategory";
-import { importCategoryController } from "../modules/cars/useCases/importCategory";
-import { listCategoriesController } from "../modules/cars/useCases/listCategories";
+/**
+ * Por estarmos trabalhand com export default não iremos mais utilizar o import dessa forma
+ * import { createCategoryController } from "../modules/cars/useCases/createCategory";
+ * import { importCategoryController } from "../modules/cars/useCases/importCategory";
+ * import { listCategoriesController } from "../modules/cars/useCases/listCategories";
+ */
+import createCategoryController from "../modules/cars/useCases/createCategory";
+import importCategoryController from "../modules/cars/useCases/importCategory";
+import listCategoriesController from "../modules/cars/useCases/listCategories";
 // Não será mais utlizado aqui
 // import { CreateCategoryUseCase } from "../modules/cars/useCases/createCategory/CreateCategoryUseCase";
 // import { CategoriesRepository } from "../modules/cars/repositories/CategoriesRepository";
@@ -20,7 +26,7 @@ const categoriesRoutes = Router();
 // import { Category } from "../models/Category";
 
 categoriesRoutes.post("/", (request, response) => {
-  return createCategoryController.handle(request, response);
+  return createCategoryController().handle(request, response);
   // Código movido para o arquivo CreateCategoryController.ts
   // const { name, description } = request.body;
   // // SRP + DPI para criação da categoria
@@ -48,7 +54,7 @@ categoriesRoutes.post("/", (request, response) => {
 
 categoriesRoutes.get("/", (request, response) => {
   console.log("Teste reload Docker");
-  return listCategoriesController.handle(request, response);
+  return listCategoriesController().handle(request, response);
   // Movido para o arquivo ListCategoriesController.ts
   // const categories = categoriesRepository.list();
   // return response.json(categories);
@@ -86,7 +92,7 @@ categoriesRoutes.post(
     // console.log(file);
     // return response.send();
 
-    return importCategoryController.handle(request, response);
+    return importCategoryController().handle(request, response);
   }
 );
 

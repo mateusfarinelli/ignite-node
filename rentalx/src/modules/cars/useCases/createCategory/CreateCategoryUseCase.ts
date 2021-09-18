@@ -26,8 +26,10 @@ class CreateCategoryUseCase {
   // "Implementado o DIP"
   constructor(private categoriesRepository: CategoriesRepositoryInterface) {}
 
-  execute({ description, name }: RequestInterface): void {
-    const categoryAlreadyExists = this.categoriesRepository.findByName(name);
+  async execute({ description, name }: RequestInterface): Promise<void> {
+    const categoryAlreadyExists = await this.categoriesRepository.findByName(
+      name
+    );
 
     // Validação de categoria por nome
     if (categoryAlreadyExists) {

@@ -96,3 +96,13 @@
         documentação;
       - Na próxima aula iremos ajustar o código para resolver erros por conta das alteraçoes
         realizadas nessa aula;
+  
+  - Inicialmente vamos remover o atributo private do nosso construtor para que método seja
+    acessado publicamente, uma vez que tambem iremos remover a verificação da instanciação
+    passando agora a não termos mais um singleton pattern para o repositorio;
+    - Em seguida vamos transformar o index do createCategory (e demais useCase) em uma função;
+    - E ajustar o import, bem como a chamada do controller no arquivo de rotas;
+    - Além disso é preciso passar os métodos execute e handle dos arquivos UseCase e Controller
+      respecitvamente para métodos assincronos e ajustar o retorno para uma promise;
+    - Feito isso, já conseguimos criar uma nova categoria diretamente no banco, isso é verificavel
+      utilizando o BeeKeeper Studio;

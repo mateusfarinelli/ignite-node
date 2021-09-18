@@ -28,7 +28,9 @@ class CategoriesRepository implements CategoriesRepositoryInterface {
 
   // Assumindo padrão Singleton (antes INSTANCE não existia e constructor era public)
   private static INSTANCE: CategoriesRepository;
-  private constructor() {
+
+  // O construtor passa a ser publico agora;
+  constructor() {
     /**
      * Não iremos inicializar a variavel pois trabalheremos agora com o banco de dados
      * this.categories = [];
@@ -36,12 +38,16 @@ class CategoriesRepository implements CategoriesRepositoryInterface {
     this.repository = getRepository(Category);
   }
 
-  public static getInstance(): CategoriesRepository {
+  /**
+   * Não iremos utilizar neste momento pois não será preciso verificar a implementação do pattern
+   * singleton, uma vez que tudo que iremos utilziar virá do banco
+   *  public static getInstance(): CategoriesRepository {
     if (!CategoriesRepository.INSTANCE) {
       CategoriesRepository.INSTANCE = new CategoriesRepository();
     }
     return CategoriesRepository.INSTANCE;
   }
+   */
 
   async create({
     name,
@@ -74,9 +80,7 @@ class CategoriesRepository implements CategoriesRepositoryInterface {
 
   async findByName(name: string): Promise<Category> {
     const category = await this.repository.findOne({
-      where: {
-        name,
-      },
+      name,
     });
 
     return category;

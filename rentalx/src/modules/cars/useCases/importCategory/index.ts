@@ -2,10 +2,26 @@ import { CategoriesRepository } from "../../repositories/implementations/Categor
 import { ImportCategoryController } from "./ImportCategoryController";
 import { ImportCategoryUserCase } from "./ImportCategoryUseCase";
 
-const categoriesRepository = CategoriesRepository.getInstance();
-const importCategoryUseCase = new ImportCategoryUserCase(categoriesRepository);
-const importCategoryController = new ImportCategoryController(
-  importCategoryUseCase
-);
+/**
+ * Transformamos nosso arquivo em uma função com o export default
+ */
 
-export { importCategoryController };
+export default (): ImportCategoryController => {
+  // export { createCategoryController, createCategoryUseCase };
+  /**
+   * Não iremos utilizar o singleton pattern por enquanto, dessa forma vamos instanciar
+   * o nosso repository manualmente;
+   * const categoriesRepository = CategoriesRepository.getInstance();
+   */
+  const categoriesRepository = new CategoriesRepository();
+  const importCategoryUseCase = new ImportCategoryUserCase(
+    categoriesRepository
+  );
+  const importCategoryController = new ImportCategoryController(
+    importCategoryUseCase
+  );
+
+  return importCategoryController;
+};
+
+// export { importCategoryController };
