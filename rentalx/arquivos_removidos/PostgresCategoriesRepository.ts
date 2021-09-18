@@ -1,4 +1,4 @@
-import { Category } from "../src/modules/cars/models/Category";
+import { Category } from "../src/modules/cars/entities/Category";
 import {
   CategoriesRepositoryInterface,
   CreatedCtegoryDTOInterface,

@@ -71,3 +71,13 @@
       o comando:
         - "npm run typeorm migration:revert"
 
+  - Nessa aula vamos fazer o mapeamento da nossa tabela para nosso código, ou seja, vamos criar um
+    modelo da tabela em forma de classe para que o typeorm possa trabalhar com essas tabelas;
+    - Inicialmente iremos renomear a pasta "model" dentro de "modules" para "entities" 
+    - Então vamos importar o objeto Entity do typeorm em nosso antigo model (que agora são entities)
+      de "Category". Para isso "decoramos" a classe com o "decorator" "@Entity("categories")"
+    - Vamos também passar os decorators para cada uma das colunas por exemplo:
+      - Para primary key: "@PrimaryColumn()"
+      - Para colunas "simples": "@Column()"
+      - Para colunas created_at ou update_at: existem decorators proprios como "@CreateDateColumn()"
+      e "@UpdateDateColumn()"
