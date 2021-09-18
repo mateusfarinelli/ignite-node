@@ -1,8 +1,8 @@
-import { Specification } from "../entities/Specification";
+import { Specification } from "../../entities/Specification";
 import {
   SpecificationRepositoryDTOInterface,
   SpecificationRepositoryInterface,
-} from "./implementations/SpecificationRepositoryInterface";
+} from "../SpecificationRepositoryInterface";
 
 class SpecificationRepository implements SpecificationRepositoryInterface {
   private specifications: Specification[];
@@ -19,7 +19,7 @@ class SpecificationRepository implements SpecificationRepositoryInterface {
       description,
       created_at: new Date(),
     });
-    this.specifications.push(specification);
+    // this.specifications.push(specification);
   }
 
   findByName(name: string): Specification {

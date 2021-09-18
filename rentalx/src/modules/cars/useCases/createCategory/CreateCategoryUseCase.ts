@@ -3,7 +3,7 @@
  */
 // import { CategoriesRepository } from "../repositories/CategoriesRepository";
 
-import { CategoriesRepositoryInterface } from "../../repositories/implementations/CategoriesRepositoryInterface";
+import { CategoriesRepositoryInterface } from "../../repositories/CategoriesRepositoryInterface";
 
 // Recebendo as informações necessárias conforme DTO criado no repository
 interface RequestInterface {

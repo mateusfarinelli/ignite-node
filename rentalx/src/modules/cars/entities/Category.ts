@@ -19,7 +19,10 @@ class Category {
     if (!this.id) {
       this.id = uuidV4();
     }
-    this.created_at = new Date();
+    /**
+     * Agora o proprio banco de dados fará a inserção da data de criação
+     * this.created_at = new Date();
+     */
   }
 }
 

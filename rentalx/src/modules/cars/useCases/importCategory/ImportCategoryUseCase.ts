@@ -1,7 +1,7 @@
 import csvParse from "csv-parse";
 import fs from "fs";
 
-import { CategoriesRepositoryInterface } from "../../repositories/implementations/CategoriesRepositoryInterface";
+import { CategoriesRepositoryInterface } from "../../repositories/CategoriesRepositoryInterface";
 
 /**
  * Interface criada pois nem todas as informações viram do CSV por isso não podemos usar o model

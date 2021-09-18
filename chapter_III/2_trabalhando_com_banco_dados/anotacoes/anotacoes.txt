@@ -81,3 +81,18 @@
       - Para colunas "simples": "@Column()"
       - Para colunas created_at ou update_at: existem decorators proprios como "@CreateDateColumn()"
       e "@UpdateDateColumn()"
+
+  - Vamos começar a refatoração de nossos repository para que de fato consigamos manipular nosso
+    banco de dados;
+      - Iniciando pelo "CategoriesRepository", na documentação vemos que existem varias maneiras
+        de trabalhar com o repository com o TypeORM, uma delas é anotar nossa classe com o 
+        decorator "@EntityRepository("entitie")" e extender a classe "Repository<Entitie>",
+        entretanto fazendo dessa forma permite que a inteface do repository acesse todos os
+        métodos disponiveis na classe Repository do TypeORM e isso não é o que queremos;
+      - Dessa forma criamos uma variavel de escopo privado do tipo "Reposity<Category>",
+        e em nosso construtor inicializamos essa variavel com o metodo getRepository passando
+        a entidade Category como argumento (valor passado ao parametro);
+      - Agora podemos fazer os ajustes necessários utilizando os métodos do TypeORM conforme
+        documentação;
+      - Na próxima aula iremos ajustar o código para resolver erros por conta das alteraçoes
+        realizadas nessa aula;

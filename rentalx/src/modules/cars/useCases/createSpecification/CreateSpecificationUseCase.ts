@@ -1,4 +1,4 @@
-import { SpecificationRepositoryInterface } from "../../repositories/implementations/SpecificationRepositoryInterface";
+import { SpecificationRepositoryInterface } from "../../repositories/SpecificationRepositoryInterface";
 
 interface RequestInterface {
   name: string;
