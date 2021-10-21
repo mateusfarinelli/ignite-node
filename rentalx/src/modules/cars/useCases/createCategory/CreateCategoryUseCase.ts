@@ -3,6 +3,8 @@
  */
 // import { CategoriesRepository } from "../repositories/CategoriesRepository";
 
+import { inject, injectable } from "tsyringe";
+
 import { CategoriesRepositoryInterface } from "../../repositories/CategoriesRepositoryInterface";
 
 // Recebendo as informações necessárias conforme DTO criado no repository
@@ -22,9 +24,13 @@ interface RequestInterface {
  *      Dependency Inversion Principle (veja nas anotações)
  */
 
+@injectable()
 class CreateCategoryUseCase {
   // "Implementado o DIP"
-  constructor(private categoriesRepository: CategoriesRepositoryInterface) {}
+  constructor(
+    @inject("CategoriesRepository")
+    private categoriesRepository: CategoriesRepositoryInterface
+  ) {}
 
   async execute({ description, name }: RequestInterface): Promise<void> {
     const categoryAlreadyExists = await this.categoriesRepository.findByName(

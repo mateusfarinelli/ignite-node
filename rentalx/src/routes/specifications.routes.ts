@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { createSpecificationController } from "../modules/cars/useCases/createSpecification";
+import { CreateSpecificationController } from "../modules/cars/useCases/createSpecification/CreateSpecificationController";
 // Não serão mais utilizados devido a refatoração de Controllers e UseCases
 // import { SpecificationRepository } from "../modules/cars/repositories/SpecificationRepository";
 // import { CreateSpecificationService } from "../modules/cars/useCases/createSpecification/CreateSpecificationUseCase";
@@ -8,9 +8,14 @@ import { createSpecificationController } from "../modules/cars/useCases/createSp
 
 const specificationsRoutes = Router();
 
-specificationsRoutes.post("/", (request, response) => {
-  return createSpecificationController.handle(request, response);
-});
+// Método sem utilizando do TSyringe para DI
+// specificationsRoutes.post("/", (request, response) => {
+//   return createSpecificationController.handle(request, response);
+// });
+
+// Método utilizando TSyringe para DI
+const createSpecificationController = new CreateSpecificationController();
+specificationsRoutes.post("/", createSpecificationController.handle);
 
 // specificationsRoutes.get("/", (request, response) => {
 //   const specifications = createSpecificationService.list();

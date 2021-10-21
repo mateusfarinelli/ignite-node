@@ -1,5 +1,6 @@
 import csvParse from "csv-parse";
 import fs from "fs";
+import { inject, injectable } from "tsyringe";
 
 import { CategoriesRepositoryInterface } from "../../repositories/CategoriesRepositoryInterface";
 
@@ -14,8 +15,12 @@ interface ImportCategoryInterface {
   name: string;
   description: string;
 }
-class ImportCategoryUserCase {
-  constructor(private categoriesRepository: CategoriesRepositoryInterface) {}
+@injectable()
+class ImportCategoryUseCase {
+  constructor(
+    @inject("CategoriesRepository")
+    private categoriesRepository: CategoriesRepositoryInterface
+  ) {}
   /**
    * Tipo do file foi extraido do Controller, parando o mouse sobre a variavel "file"
    * recebida através da desestruturação do request.
@@ -33,10 +38,10 @@ class ImportCategoryUserCase {
     categories.map(async (category) => {
       const { name, description } = category;
 
-      const existCategory = this.categoriesRepository.findByName(name);
+      const existCategory = await this.categoriesRepository.findByName(name);
 
       if (!existCategory) {
-        this.categoriesRepository.create({ name, description });
+        await this.categoriesRepository.create({ name, description });
       }
     });
 
@@ -106,4 +111,4 @@ class ImportCategoryUserCase {
   }
 }
 
-export { ImportCategoryUserCase };
+export { ImportCategoryUseCase };

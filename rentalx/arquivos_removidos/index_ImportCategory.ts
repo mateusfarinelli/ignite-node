@@ -1,6 +1,6 @@
-import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
-import { ImportCategoryController } from "./ImportCategoryController";
-import { ImportCategoryUserCase } from "./ImportCategoryUseCase";
+import { CategoriesRepository } from "../src/modules/cars/repositories/implementations/CategoriesRepository";
+import { ImportCategoryController } from "../src/modules/cars/useCases/importCategory/ImportCategoryController";
+import { ImportCategoryUserCase } from "../src/modules/cars/useCases/importCategory/ImportCategoryUseCase";
 
 /**
  * Transformamos nosso arquivo em uma função com o export default

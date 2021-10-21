@@ -102,19 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
-<<<<<<< HEAD
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
-=======
->>>>>>> 888bdf0111561c304404370eda776a0cad799533
+
+# csv file
+*.csv

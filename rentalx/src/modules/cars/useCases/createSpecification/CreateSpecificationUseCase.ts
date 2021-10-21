@@ -1,11 +1,15 @@
+import { inject, injectable } from "tsyringe";
+
 import { SpecificationRepositoryInterface } from "../../repositories/SpecificationRepositoryInterface";
 
 interface RequestInterface {
   name: string;
   description: string;
 }
+@injectable()
 class CreateSpecificationUseCase {
   constructor(
+    @inject("SpecificationRepository")
     private specificationRepository: SpecificationRepositoryInterface
   ) {}
 
