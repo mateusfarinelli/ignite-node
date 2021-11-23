@@ -1,3 +1,5 @@
+import { getRepository, Repository } from "typeorm";
+
 import { Specification } from "../../entities/Specification";
 import {
   SpecificationRepositoryDTOInterface,
@@ -5,27 +7,43 @@ import {
 } from "../SpecificationRepositoryInterface";
 
 class SpecificationRepository implements SpecificationRepositoryInterface {
-  private specifications: Specification[];
+  private repository: Repository<Specification>;
+
+  // Utilizado quando não tinhamos a migration/entity criada para o typeORM
+  // private specifications: Specification[];
 
   constructor() {
-    this.specifications = [];
+    this.repository = getRepository(Specification);
+    // Utilizado quando não tinhamos a migration/entity criada para o typeORM
+    // this.specifications = [];
   }
 
-  create({ name, description }: SpecificationRepositoryDTOInterface): void {
-    const specification = new Specification();
-
-    Object.assign(specification, {
+  async create({
+    name,
+    description,
+  }: SpecificationRepositoryDTOInterface): Promise<void> {
+    const specification = this.repository.create({
       name,
       description,
-      created_at: new Date(),
     });
-    // this.specifications.push(specification);
+
+    // Utilizado quando não estavamos fazendo persistencia de dados no BD
+    // const specification = new Specification();
+    // Object.assign(specification, {
+    //   name,
+    //   description,
+    //   created_at: new Date(),
+    // });
+    // // this.specifications.push(specification);
+
+    await this.repository.save(specification);
   }
 
-  findByName(name: string): Specification {
-    const specification = this.specifications.find(
-      (specification) => specification.name === name
-    );
+  async findByName(name: string): Promise<Specification> {
+    const specification = this.repository.findOne({
+      name,
+    });
+
     return specification;
   }
 }

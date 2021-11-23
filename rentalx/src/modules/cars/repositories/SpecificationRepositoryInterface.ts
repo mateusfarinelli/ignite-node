@@ -6,8 +6,11 @@ interface SpecificationRepositoryDTOInterface {
 }
 
 interface SpecificationRepositoryInterface {
-  create({ name, description }: SpecificationRepositoryDTOInterface): void;
-  findByName(name: string): Specification;
+  create({
+    name,
+    description,
+  }: SpecificationRepositoryDTOInterface): Promise<void>;
+  findByName(name: string): Promise<Specification>;
 }
 
 export {

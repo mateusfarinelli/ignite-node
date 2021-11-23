@@ -2,19 +2,15 @@
 
   - Até agora fizemos nossas injeções de dependencia de maneira manual no arquivo index
     de cada useCase, veremos nesse módulo como utilizar a biblitoeca TSyringe que nós
-    ajudará com a automação desse processo;
-  
+    ajudará com a automação desse processo;  
   - Iremos então instalar a lib usado o comando "npm install --save tsyringe" e a documen-
     tação dessa lib pede para que habilitemos a utilização de decorators e do reflect-metada.
-    Como já fizemos isso em aulas passadas, podemos seguir com a instlação da lib;
-  
+    Como já fizemos isso em aulas passadas, podemos seguir com a instlação da lib;  
   - Para iniciar nossa automatização de injeção de dependencias com o Tsyringe iremos criar
     o diretorio "src/shared/container", já que o Tsyringe atua meio que criando containers.
-    Dentro desse diretorio criamos o arquivo index.ts;
-  
+    Dentro desse diretorio criamos o arquivo index.ts;  
   - Fazemos então a criação de seviço de injeção criando um singleton para o 
-    CategoriesRepository;
-  
+    CategoriesRepository;  
   - Para que possamos utilizar esse serviço, vamos fazer um exemplo utilizando o 
     CreateCategoryUseCase fazendo o import dos módulos {injec, injectable} Tsyringe. 
     No constructor dessa classe iremos anotar a variavel privada categoriesRepositry 
@@ -22,55 +18,58 @@
     com:
       "@incject("CategoriesRepository")"
     E também precisamos anotar nosso useCase com o decorator "@injectable()" para que
-    essa classe possa ser injetada em outras fazendo a dependência necessária.
-  
+    essa classe possa ser injetada em outras fazendo a dependência necessária.  
   - Dessa forma toda vez que fizemos a chamada dessas classes o Tsyringe irá verificar os
-    decorators e realizar a instanciação e injeção dos componentes necessários.
-  
+    decorators e realizar a instanciação e injeção dos componentes necessários.  
   - Agora no CreateCategoryController, devemos modifica-lo um pouco já que a injeção não mais
     será feita no constructor da classe e sim diretamente no método "handle", chamando o
     módulo container da biblioteca e invocando o método resolve passando o UseCase como
     argumento;
-
   - Dessa forma não precisamos mais do arquivo "createCategory/index.ts" pois é o Tsyringe
-    que cuida das injeções;
-  
+    que cuida das injeções;  
   - Agora nosso controller trabalhará como middleware em nossas rotas, não sendo mais
     necessário passar "request", "response" nelas. Para isso criamos um variavel e 
     fazemos a instancia de nosso controller, agora nos métodos que utilizam esse controller
     basta fazer o controller atuar como um middleware, removendo a parte de request e
     response anteriormente utilziada na rota;
-
   - Por fim em nosso server vamos importar o arquivo de DI para que nossa aplicação possa
     realizar essas tarefas e jogar os arquivos de index do useCase no diretorio 
     "./rquivos_removidos";
 
-  - Nesta aula iremos fazer a mesma refatoração agora para o useCase "CreateSpecification";
-  
+  - Nesta aula iremos fazer a mesma refatoração agora para o useCase "CreateSpecification";  
   - Iniciamos então criando um novo container passando a interface e o repository de 
-    Specifications;
-  
+    Specifications;  
   - No CreateSpecificationUseCase fazemos a referencia utilizando os decorators 
     "inject("Repository")" na variavel do construtor, e "@injectable()" na classe para 
-    que novamente o TSyringe fique responsavel por fazer as injeções dessa classe automagicamente;
-  
+    que novamente o TSyringe fique responsavel por fazer as injeções dessa classe automagicamente;  
   - No controller fazemos o import do modulo "container" para que então sejamos capazes de
     utilizar a instancia do nosso useCase nessa classe, removendo o método construtor da classe
     e atribuindo o resultado o metodo container.resolve("UseCase") para variavel que iremos
-    utilizar para acessar a classe do useCase;
-  
+    utilizar para acessar a classe do useCase;  
   - Agora nas rotas basta ajustar o métodos que utilizam o controller  das Specifications,
     lembrando de instanciar a classe do controller para que seja possível utiliza-la como
-    middleware na requisição;
-  
+    middleware na requisição;  
   - Como ainda não temos a migration de Specifications, seguiremos a refatoração dos demais
-    useCases. Neste caso todos utilizam o container de Categories pois são useCases dessa entity;
-  
+    useCases. Neste caso todos utilizam o container de Categories pois são useCases dessa entity;  
   - Então basta repetir o processo e ao fim remanejar os arquivos index.ts de cada useCase para
-    o diretorio "arquivos_removidos";
-  
+    o diretorio "arquivos_removidos";  
   - Para que o método de upload de importação de categorias funcionasse foi preciso fazer alguns
     ajustes, deixando os métodos assincronos já que agora trabalhamos com uma requisição http;
   
+  - Nesta aula vamos enfim criar a migration da tabela Specifications;
+  - Começamos então criando a migration conforme feito no item 2 desse capitulo, seguindo
+    os campos conforme orientação em aula;
+  - Em seguida vamos ajustar nossa entidade "Specification.ts" de acordo com a implementação
+    utilizada pelo typeORM;
+  - Posteriormente vamos fazer alterações no arquivo "SpecificationRepository.ts" já que
+    é ele o responsavel por implementar os métodos chamados nas requisições HTTP (ou seja
+    nossa camada de dados);
+  - Também ajustar o tipo de retorno esperado pelos métodos no arquivo 
+    "SpecificationRepositoryInterface.ts"
+  - E por fim ajustar os arquivos "CreateSpecificationUseCase.ts" e "CreateSpecificationController.ts",
+    mudando o tipo de retorno e como as interfaces e implementações foram alteradas para retornarem
+    promises, é preciso também alterar a função deixando-as assincronas;
+  
+
   
 
