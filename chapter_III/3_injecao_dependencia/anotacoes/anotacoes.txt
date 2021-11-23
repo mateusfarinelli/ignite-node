@@ -70,6 +70,28 @@
     mudando o tipo de retorno e como as interfaces e implementações foram alteradas para retornarem
     promises, é preciso também alterar a função deixando-as assincronas;
   
-
+  - Nesta aula (ultima da seção) vamos continuar com o desenvolvimento da documentação, já que
+    até agora só temos a documentação feita para a parte de categorias;
+  - Vamos iniciar pela parte da criação de especificações, seguimos o modelo da documentação. 
+    Nesste ponto iremos fazer uma abordagem diferente para a propriedade "requestBody", 
+    seguindo o esquema de referencias usando a propriedade "$ref" onde declaramos um caminho qual o 
+    swagger irá interpretar dentro do json, no nosso caso criamos após a propriedade "paths" a 
+    propriedade "definitions" e lá definimos outra propriedade chamada "Specification" onde 
+    passamos os os campos da tabela conforme fizemos no "CreateCategories" e como valor para a 
+    chave "$ref", ficando com:
+      '"$ref": "#/definitions/Specification"'
+  - Agora para fazer o "ImportCategories" seguimos até o "requestBody" igual aos demais, entretanto
+    o content para quando queremos fazer o upload de um arquivo CSV é estritamente:
+      "application/octet-stream"
+    Seguimos então conforme documentação e vamos para o response, definindo o "status" de codigo
+    201;
+  - Foi preciso realizar uma mudança em relação ao upload do arquivo com swagger, onde tinha-se
+    o "application/octet-stream", teremos o "multipart/form-data", com o schema de tipo "object"
+    e então definimos as propriedades desse "object" como:
+       "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+    Onde, "file" é o nome do campo que esperamos na requisição.
   
 
