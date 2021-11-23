@@ -1,0 +1,17 @@
+### Usuário ###
+
+  - Nesta seção iremos criar o migration, repositorio e controller para a entidade Usuário;
+  - Também veremos criptografia de senha, JWT, autenticação nas rotas e Tratamento de execeções;
+
+  - Na primeira aura iremos criar então a migration de usuário;
+  - Começando pela execução do comando:
+    - "npx typeorm migration:create -n CreateUsers"
+    E em seguida iremos codificar a migration conforme escopo da tabela passada no grupo;
+  - Agora executa-se o comando:
+    - "npm run typeorm migration:run"
+    Para que a tabela seja gerada no banco de dados;
+  - Cria-se etão o módulo "accounts" para armazenar a entidade "user" e as classes responsaveis
+    por gerir essa entidade (useCase, controller e etc). E em seguida cria-se entidade nomeando o
+    arquivo como "User.ts";
+  
+  
