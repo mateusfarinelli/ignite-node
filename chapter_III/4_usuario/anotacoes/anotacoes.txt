@@ -42,4 +42,14 @@
       - Posteriormente vamos no nosso "shared/container" onde estão guardados o registros de nossas dependencias
         para criar um novo container para o "UserRepositoryInterface"
 
+  - Nesta aula vamos dar sequencia na aula anterior, criando o nosso controller;
+    - Como já havia criado o arquivo e a classe na aula anteiror, partimos para implementação
+      do método handle que agora receberá como parametro o "Request" e o "Response" do express,
+      e retornará uma "Promise<Response>";
+    - A implementação do método se resume em receber as informações necessárias pelo body da
+      requisição (fazendo a desestruturação para facilitar) e em seguida executar a chamada
+      do "CreateUserUseCase" chamando o método "execute()" e passando os dados recebidos na
+      requisição conforme outros métodos semelhantes ja implementados;
+  - Seguimos então para codificção de nossas rotas, criando o arquivo "routes/users.routes.ts";
+    - Aqui criamos a rota igual fizemos para os demais casos semelhantes;
   
