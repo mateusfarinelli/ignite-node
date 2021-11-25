@@ -13,5 +13,33 @@
   - Cria-se etão o módulo "accounts" para armazenar a entidade "user" e as classes responsaveis
     por gerir essa entidade (useCase, controller e etc). E em seguida cria-se entidade nomeando o
     arquivo como "User.ts";
-  
+
+  - Nessa aula iremos criar o repositório de usuário;
+  - Começamos então criando o diretorio "accounts/repositories". Logo em seguida criamos o arquivo
+    de interface do repositório "UserRepositoryInterface.ts";
+  - Inicialmente o unico método que teremos é o create. Para esse método precisamos receber as
+    informações referentes ao nosso "User";
+    - Dessa forma criamos a DTO Interface para o "User" afim de tipar e dar inteligebilidade para
+      nosso código, passando então as propriedades necessarias;
+  - Assim criamos então o método recebendo uma argumento "data" do tipo "CreateUserInterfaceDTO"
+    e esperamos que esse método retorne uma "Promise<void>";
+  - Na sequencia vamos criar a "implementation" onde será guardado o código responsavel por fazer
+    a comunicação com o banco de dados como já vimos anteriormente.
+    - Neste ponto vamos fazer uma leve refatoração colando o DTO "CreateUserInterfaceDTO" em um arquivo
+      separado, para que possamos utiliza-lo em outras classes caso seja necessário, para isso criamos
+      o diretorio "modules/accounts/dtos" e copiamos o código da DTO fazendo o export;
+    - Por enquanto iremos fazer de uma forma mais basica sem pensar em validators ou regras de negocio.
+      - Sendo assim, iniciamos fazendo a desestruturação do "data" que estava sendo passado como parametro
+        do método e criamos a instancia do "getRepository(User)". Por fim criamos e salvamos o usuário
+        com os dados recebidos;
+    - Agora podemos dar inicio ao desenvolvimento do UseCase;
+      - Craimos então o diretorio "modules/accounts/useCases" e em seguida criamos o diretorio 
+        "modules/accounts/useCases/createUser";
+      - Sem seguida criamos os arquivos "CreateUserUseCase.ts" e "CreateController.ts", suas 
+        respectivas classes e exprts;
+      - No arquivo "CreateUserUseCase.ts" iremos declarar o método "execute" e já fazer o necessário
+        para que essa classe possa ser injetada com o TSyringe;
+      - Posteriormente vamos no nosso "shared/container" onde estão guardados o registros de nossas dependencias
+        para criar um novo container para o "UserRepositoryInterface"
+
   
