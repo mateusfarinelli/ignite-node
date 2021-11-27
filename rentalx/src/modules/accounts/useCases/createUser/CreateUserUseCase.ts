@@ -12,14 +12,12 @@ class CreateUserUserCase {
 
   async execute({
     name,
-    username,
     email,
     drive_license,
     password,
   }: CreateUserInterfaceDTO): Promise<void> {
     await this.userRepository.create({
       name,
-      username,
       email,
       drive_license,
       password,

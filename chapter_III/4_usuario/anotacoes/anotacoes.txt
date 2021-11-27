@@ -53,3 +53,12 @@
   - Seguimos então para codificção de nossas rotas, criando o arquivo "routes/users.routes.ts";
     - Aqui criamos a rota igual fizemos para os demais casos semelhantes;
   
+  - Nesta aula iremos fazer uma rápida alteração na tabela de usuários que consiste basicamente
+    remover a coluna "username", utilizando a criação de uma migration que será a responsavel
+    por realizar o "dropColumn" no método "up" da migration e em caso "down" realizar a adição
+    do campo na tabela;
+    - Para isso iniciamos criando a migration "AlterUserDeleteUsername" com o comando:
+      - "npx typeorm migration:create -n AlterUserDeleteUsername";
+    - Fazemos o desenvolvimento do método e então executamos o comando para executar a migration:
+      - "npm run typeorm migration:run";
+    - Por fim vamos remover todo código que envolve username;

@@ -1,6 +1,5 @@
 import { createConnection, getConnectionOptions } from "typeorm";
 
-console.log("Arquivo DB");
 interface OptionsInterface {
   host: string;
 }
