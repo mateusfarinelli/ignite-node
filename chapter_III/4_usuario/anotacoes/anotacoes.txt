@@ -62,3 +62,18 @@
     - Fazemos o desenvolvimento do método e então executamos o comando para executar a migration:
       - "npm run typeorm migration:run";
     - Por fim vamos remover todo código que envolve username;
+  
+  - Nesta aula vamos fazer a criptografia da senha, já que até o presente momento ela aparece
+    totalmente exposta no nosso banco de dados;
+    - Para isso vamos utilizar a biblioteca Bcrypt que será a responsavel por gerar o hash
+      que será utilizado como senha, para isso executamos os comandos:
+      - "npm install bcrypt" e "npm install --save-dev @types/bcrypt";
+      - "npm install bcryptjs" e "npm install --save-dev @types/bcryptjs"; // Docker com problemas com o bycript
+    - Agora no nosso UseCase antes de enviar a senha, iremos criptografar a senha e
+      posteriormente passar o hash gerado pelo bcrypt como valor deste campo;
+    - No "CreateUserUseCase" fazemos a verificação de e-mail já existente, para isso fazemos a declaração
+      da função no "UserRepositoryInterface" recebendo "email" como argumento e no "UserRepository",
+      fazemos a implementação da funçãp que busca o usuário no banco dados através do e-mail
+      utilizando o método "findOne" do "typeorm"
+    
+    
