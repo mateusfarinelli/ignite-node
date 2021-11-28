@@ -74,6 +74,35 @@
     - No "CreateUserUseCase" fazemos a verificação de e-mail já existente, para isso fazemos a declaração
       da função no "UserRepositoryInterface" recebendo "email" como argumento e no "UserRepository",
       fazemos a implementação da funçãp que busca o usuário no banco dados através do e-mail
-      utilizando o método "findOne" do "typeorm"
-    
-    
+      utilizando o método "findOne" do "typeorm";
+
+  - Agora vamos dar inicio a parte de autenticação de nossa aplicação, pra isso iremos utilizar
+    o JWT (JSON Web Token);
+    - A estratégia de Tokens é largamente utilziada no desenvolvimento WEB/Mobile moderno, por isso
+      escolhemos utilizar essa abordagem aqui também. Além disso o JWT em especial é uma das formas
+      mais encontradas nesse universo e ele possui a seguinte estrutura:
+      - "HeaderHash.PayloadHash.AssinaturaHash" conforme encotrado em jwt.io;
+    - Assim como qualquer sistema de hash e criptografia o JWT criptografa esses campos de um JSON
+      nesses hashs e utilizando uma hash privada conhecida apenas pelas aplicações essas trocas de 
+      informações são feitas de modo seguro;
+    - É importante ressaltar que as informações sobre um usuário por exemplo, ficam contidos na
+      PayloadHash e não devemos passar dados sensiveis nessas informações, como por exemplo senhas,
+      numeros de documentos pessoais e etc;
+
+    - Iniciamos então a aula da sequencia adicionando a lib "jsonwebtoken" com os comandos:
+      - "npm install jsonwebtoken" e "npm install --save-dev @types/jsonwebtoken";
+      - E seguimos criando o diretório "/modules/accounts/authenticateUser" onde ficaram os códigos
+        responsaveis por fazer a autenticação dos usuários, ou seja, gerênciar os tokens validos
+        de nossa aplicação;
+      - Em seguida fazemos a criação do "authenticateUserUseCase.ts" onde iremos criar uma interface
+        para receber os dados da requisição (email e senha) e também fazer as verificações de 
+        email e senha para então gerar o token no método "execute"
+      - Posteriormente vamos criar o controller das requisições de autenticação 
+        "authenticateController".ts. Definindo o método assincrono "handle" que recebe o email e
+        password pelo body da requisição fazendo a chamada ao "authenticateUserUseCase" e passando
+        as informações recebidas para o método retornando as informações recebidas e formato JSON;
+      - E por fim vamos criar o arquivo "authenticate.routes.ts" no nosso diretório "routes" e
+        fazendo sua chamada no "routes/index.ts", passando ele diretamente já que não haverá nenhum
+        recurso na url, apenas aquele informado no arquivo "authenticate.routes.ts"
+
+      
