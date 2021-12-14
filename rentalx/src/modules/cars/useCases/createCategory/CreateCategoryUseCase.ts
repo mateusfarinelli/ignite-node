@@ -5,6 +5,7 @@
 
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../../errors/AppError";
 import { CategoriesRepositoryInterface } from "../../repositories/CategoriesRepositoryInterface";
 
 // Recebendo as informações necessárias conforme DTO criado no repository
@@ -40,7 +41,7 @@ class CreateCategoryUseCase {
     // Validação de categoria por nome
     if (categoryAlreadyExists) {
       // Erro lançado para quem fez a requisição
-      throw new Error("Category already existis!");
+      throw new AppError("Category already existis!");
     }
 
     this.categoriesRepository.create({ name, description });

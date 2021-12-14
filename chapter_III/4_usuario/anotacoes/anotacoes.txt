@@ -132,5 +132,25 @@
     - Nas rotas de "specifications" fazemos com que seja utilizado o middleware criado
     - Por fim testamos através do insomnia, gerando um token pela rota "/sessions" e na requisição de criação de uma nova especificação
       passamos o token gerado na aba de "Authentication" selecionando o tipo de autenticação como "Baerer Token";
+  
+  - Damos inicio a ultima aula da seção de Usuários, nesta aula iremos verificar o tratamento de exceções que tanto fizemos na aula anterior;
+    - Vamos iniciar criando o arquivo "src/erros/AppError.ts";
+    - Criamos a classe AppError, com os atributos message e statusCode do tipo string e number respecitavamente;
+      - Definimos o construtor passando 400 como valor padrão para o statusCode;
+    - Agora substituimos o "Error" do "throw new Error()" por "AppError" e passamos o status code correto para cada instancia
+      dessa classe;
+    - Para que possamos retornar o erro no response da requisição em vez de disparar um novo erro, no arquiv "server.ts", após as rotas
+      vamos criar o middleware:
+        - "app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+            if(err instanceoff AppError){
+              return response.status(err.statusCode).json({ message: err.message })
+            }
+
+            return response.status(500).json({ status: "error, message: `Internal server error - ${err.message}` })
+        })";
+    - O express não entende bem os erros gerados, para isso precisamos instalar a biblioteca "express-async-errors" e 
+      chama-la após o express no arquivo "server.ts". O comando de instalação é:
+        - "npm install express-async-errors"
+    - Testando através do insomnia veremos que temos o retorno do erro e do status code, e nossa aplicação não quebra mais;
 
       

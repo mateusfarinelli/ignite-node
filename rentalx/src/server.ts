@@ -1,11 +1,13 @@
 import "reflect-metadata";
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
+import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
 import { routes } from "./routes";
 import swaggerFile from "./swagger.json";
 import "./database";
 import "./shared/container";
+import { AppError } from "../errors/AppError";
 
 // Não sera mais necessário importar rotas aqui;
 // import { categoriesRoutes } from "./routes/categories.routes";
@@ -22,6 +24,16 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // Fazendo o import das rotas no arquivo "routes/index.ts"
 app.use(routes);
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  if (err instanceof AppError) {
+    return res.status(err.statusCode).json({ message: err.message });
+  }
+  return res.status(500).json({
+    status: "error",
+    message: `Internal server error - ${err.message}`,
+  });
+});
 
 /**
  * Deixando o "/categories" como path inicial da rota, assim dentro do categoriesRoutes
