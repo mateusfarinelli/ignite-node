@@ -1,5 +1,6 @@
 import { Router } from "express";
 
+import { ensureAuthenticated } from "../middleares/ensureAuthenticated";
 import { CreateSpecificationController } from "../modules/cars/useCases/createSpecification/CreateSpecificationController";
 // Não serão mais utilizados devido a refatoração de Controllers e UseCases
 // import { SpecificationRepository } from "../modules/cars/repositories/SpecificationRepository";
@@ -15,6 +16,7 @@ const specificationsRoutes = Router();
 
 // Método utilizando TSyringe para DI
 const createSpecificationController = new CreateSpecificationController();
+specificationsRoutes.use(ensureAuthenticated);
 specificationsRoutes.post("/", createSpecificationController.handle);
 
 // specificationsRoutes.get("/", (request, response) => {

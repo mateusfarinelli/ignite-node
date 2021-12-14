@@ -104,5 +104,33 @@
       - E por fim vamos criar o arquivo "authenticate.routes.ts" no nosso diretório "routes" e
         fazendo sua chamada no "routes/index.ts", passando ele diretamente já que não haverá nenhum
         recurso na url, apenas aquele informado no arquivo "authenticate.routes.ts"
+      
+    - Vamos trabalhar nesta aula a autentição das rotas na nossa aplicação;
+    - Essa verificação de autenticação será criado como um middleware;
+    - Para isso criamos o arquivo "src/middlewares/ensureAuthenticated.ts";
+      - Vamos definir então a função "ensureAuthenticated(req: Request, res: Response, next: NextFunction){}";
+        - Dessa forma garantimos que o usuário que acessará uma rota que implementa esse middleware esteja autenticado;
+    - Basicamente em autenticações utilizando JWT espera-se que a requisição contenha no "authorization header" um "bearer token"
+      que basicamente receberemos algo como "Bearer <token>";
+    - Então o primeiro passo após a definição da função é capturar o authorization header e verificar a existencia desse bearer token;
+    - Caso exista precisamos desestruturar a informação recebida para que possamos capturar o JWT, fazendo algo como:
+      - "const [, token] = authHeader.split(" ")";
+      - Dessa forma conseguimos utilizar o token como essa varivel definida como "token";
+    - O próximo passo é validar o token recebido utilizando o método "verify" do JWT;
+      - Passando o token capturado e a secret-key definida na aula anterior;
+      - Por se tratar de um método que pode gerar erros, o verify necessita estar dentro de um bloco try-catch,
+        onde em caso de exceções possamos retornar ao nosso cliente a exceção e em caso contrario darmos sequencia  
+        na execução de nosso sistema;
+      - Precisaremos ainda fazer uma nova desestruturação para que possamos pegar diretamente o token em vez de um JSON;
+        assim criamos uma interface nomeada "PayloadInterface" que ira conter a propriedade "sub" e forçamos que o verify
+        retorne um objeto do tipo "PayloadInterface" com a palavra reservada "as" seguido do tipo que no caso é o "PayloadInterface";
+      - Dessa forma conseguimos desestruturar a resposta do verify e capturar apenas a string do token;
+    - Caso o token seja valido, precisaremos validar nosso usuário e para isso vamos chamar o "UserRepository" criando uma instancia dele;
+      - E então chamamos a execução do método "findById(userId)";
+        - Para isso vamos definir este método em nosso código utilizando o método "findOne(id)" do TypeORM, retornando o "User";
+      - Validamos então a existencia do usuário, caso não exista lançamos uma nova exceção, caso contrario seguimos com o método "next()";
+    - Nas rotas de "specifications" fazemos com que seja utilizado o middleware criado
+    - Por fim testamos através do insomnia, gerando um token pela rota "/sessions" e na requisição de criação de uma nova especificação
+      passamos o token gerado na aba de "Authentication" selecionando o tipo de autenticação como "Baerer Token";
 
       
