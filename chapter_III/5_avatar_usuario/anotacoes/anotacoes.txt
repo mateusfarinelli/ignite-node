@@ -1,0 +1,59 @@
+### Avatar de usuário ###
+  - Nesta aula iremos abordar os conceitos aprendidos até aqui para disponibilizar ao usuário
+    a utilização de avatar;
+  
+    - Começamos criando a classe "modules/accounts/useCases/updateUserAvatar/UpdateUserAvatarUseCase.ts"
+      - Definimos quais são as tarefas necessárias para que possamos disponibilizar essa funcionalidade
+        como comentario em nosso código. Chegando as seguintes tarefas:
+          - // Add coluna avatar na tabela de users;
+          - // Refatorar usuaário com coluna avatar;
+          - // Configurar upload multer;
+          - // Criar regra de negócio do upload;
+          - // Criar controller;
+      - Damos inicio a primeira tarefa criando uma migration com o comando:
+        - "npx typeorm migration:create -n AlterUserAddAvatar";
+      - E então definimos os métodos de "up" e "down" para inserir uma coluna 
+        conforme vimos anteriormente;
+      - Posteriormente vamos executar a migration para alterar nossa tabela com o comando:
+        - "npm run typeorm migration:run";
+        - Se verificarmos usando o BeeKeeper veremos que a coluna foi adicionada como esperado;
+      - Também é preciso adicionar a coluna na entidade que se ecnontra em "modules/accounts/entities/User.ts"
+        conforme documentação e outras colunas já inseridas aqui;
+      - Agora na nossa classe "UpdateUserAvatarUseCase" criamos a interface "ReqeustInterface" com 
+        as propriedades "user_id: string" e "avatar_file: string", e esperamos essas propriedades 
+        como argumento do método "execute";
+      - No método "execute" da classe vamos capturar o usuário com o id recebido na requisiçãp usando
+        o método findById do repositório, atribuir ao campo "avatar" o valor recebido como parâmetro
+        na função e então novamente usando o repositório vamos acionar o método "create" passando
+        o usuário capturado como parâmetro;
+      - Agora criamos o arquivo "UpdateUserAvatarController.ts" no mesmo diretório que criamos
+        o arquivo da classe "UpdateUserAvatarUseCase", também criamos a classe e o método handle
+        confome ja vinhamos trabalhando;
+      - Como ja temos um middleware que faz a validação de usuário e proporciona o JWT para nós,
+        não precisamos solicitar que o usuário, ou neste caso, o id do usuário seja fornecido pelo
+        front, basta que no método "ensureAuthenticated" façamos com que esse id seja inserido no
+        header das requisições diretamente no navegador após a autenticação.
+        - Para isso precisaremos sobreescrever a classe de request do express, para que possamos
+          adicionar uma propriedade especifica que iremos criar, que neste caso é user. E para isso
+          vamos criar o arquivo "src/@types/express/index.d.ts" e adicionamos o código mostrado;
+        - Agora no método ensureAuthenticated, podemos fazer essa inserção do id do usuario no header
+          da requisição antes da chamada do método "next()";
+      - Voltando ao controller conseguimos capturar o id do usuario a partir do request.user;
+      - Precisamos também receber o arquivo no nosso controller, entretanto iremos ver isso mais a 
+        frente;
+      - Seguimos então fazendo a injeção do UseCase no nosso controller e acionamos o método execute
+        passando os parametros necessários;
+      - Vamos até o arquivo de rotas do usuario e vamos definir uma nova rota com o método HTTP "patch",
+        utilizado quando a requisição irá fazer apenas a alteração de um unico campo. E também 
+        chamar o método "handle" do controller criado;
+      - Precisamos também fazer o gerenciamento do upload do arquivo, como a aplicação ja é grande os
+        bastante vamos tirar do arquivo de rotas a responsabilidade de fazer esse gerenciamento,
+        pois atualmente fazemos as configurações do multer (plugin utilizado para fazer o upload) 
+        dentro desses arquivos.
+        - Então criamos o arquivo "src/config/upload.ts" e iniciamos importanto o "multer" e de 
+          dentro do "path" o "resolver" e criamos a função "upload" que receberá o argumento "folder"
+          ja que na nossa aplicação hoje temos 2 rotas que fazem upload de tipos de arquivos distintos
+          com finalidades distintas.
+
+  - Na sequencia...    
+
