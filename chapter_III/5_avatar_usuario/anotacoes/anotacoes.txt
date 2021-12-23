@@ -71,3 +71,20 @@
     - E no controller criado capturamos o nome do arquivo enviado;
     - É preciso ainda adicionar os campos "id" e "avatar" na "CreateUserInterfaceDTO" como sendo campos
       não obrigatórios e recebe-los e passa-los na função "create" do "UserRepository";
+  
+  - Nessa aula vamos criar uma validação para que cada vez que enviarmos a requisição de patch
+    somente uma imagem por usuário seja mantida na aplicação;
+    - Iniciamos criando o arquivo "src/utils/file.ts" que irá exportar uma constante que receberá
+      a função de deleterFile;
+    - Essa por sua vez utilizará o file system nativo do node para verificar se o arquivo existe com o método "fs.stat(filename)",
+      caso não exista ele irá sair da aplicação e caso exista vamos deletar de fato o arquivo utilizando
+      o método "fs.unlink(filename)";
+    - No "UpdateUserAvatarUseCase.ts" vamos importar e utilizar a função que acabamos de criar antes
+      logo antes de alterarmos o valor da variavel user.avatar;
+    - Como não estamos salvando o caminho completo em nosso banco de dados e sim somente o nome do arquivo
+      precisamos concatenar o caminho até o arquivo e para isso vamos passar o caminho usando template
+      literals ficando: 
+        - `./tmp/avatar/${user.avatar}`;
+    - Também vamos adicionar uma validação para verificar a existencia do user.avatar caso não exista
+      seguimos com o fluxo normal do nosso programa sem fazer a deleção do arquivo;
+    

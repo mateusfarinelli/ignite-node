@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-import { request } from "http";
 import { verify } from "jsonwebtoken";
 
 import { AppError } from "../../errors/AppError";
@@ -37,8 +36,8 @@ export async function ensureAuthenticated(
     }
 
     request.user = {
-      id: userId
-    }
+      id: userId,
+    };
 
     next();
   } catch {
