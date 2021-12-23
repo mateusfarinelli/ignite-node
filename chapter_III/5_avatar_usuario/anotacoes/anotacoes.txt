@@ -55,5 +55,19 @@
           ja que na nossa aplicação hoje temos 2 rotas que fazem upload de tipos de arquivos distintos
           com finalidades distintas.
 
-  - Na sequencia...    
-
+  - Com a função "upload" "src/config/upload.ts" do arquivo  criada na aula passada, vamos seguir 
+    nessa aula desenvolvendo a funcionalidade;
+    - Começamos então desenvolvendo a funcionalidade, onde utilizando o multer vamos criar um storage
+      do tipo "diskStorage" passamos a destination sendo o caminho relativo para a pasta "./tmp" e 
+      vamos criar um nome customizado par ao arquivo, onde geramos um hash de 16bits hexadecimal
+      com a lib "crypto" nativa do node e concatenamos esse hash com o "file.originalname", ja que
+      para nomear nosso arquivo usamos uma função e o retorno dessa função é uma função de callback
+      passamos o erro = null e o "fileName" criado;
+    - Agora no arquivo de rotas criamos a variavel "uploadAvatar" que recebe a função multer e
+      passamos o a função de upload que criamos como parâmetro passando "./tmp/avatar" como parametros
+      para nossa função;
+    - Passamos na rota so métodos "uploadAvatar.single("avatar")"  e "ensureAuthenticated" 
+      como middlewares dessa rota;
+    - E no controller criado capturamos o nome do arquivo enviado;
+    - É preciso ainda adicionar os campos "id" e "avatar" na "CreateUserInterfaceDTO" como sendo campos
+      não obrigatórios e recebe-los e passa-los na função "create" do "UserRepository";

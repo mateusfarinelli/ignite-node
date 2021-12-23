@@ -16,12 +16,16 @@ class UserRepository implements UserRepositoryInterface {
     email,
     drive_license,
     password,
+    id,
+    avatar,
   }: CreateUserInterfaceDTO): Promise<void> {
     const user = this.repository.create({
       name,
       email,
       drive_license,
       password,
+      id,
+      avatar,
     });
 
     await this.repository.save(user);
