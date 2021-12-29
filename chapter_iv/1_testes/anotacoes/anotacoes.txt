@@ -1,0 +1,37 @@
+#########################################################
+
+  - Neste capitulo iremos conhecer um pouco sobre testes
+  - Quais tipos de testes e em qual momento utilizar;
+  - TDD: Conhecer e como aplicar;
+  - Regras de negócio: análise de requisitos
+
+##########################################################
+
+#### TESTES ###
+
+- Vamos iniciar conhecendo um pouco sobre testes, quais os tipos existentes, quais iremos utilizar
+  neste e nos próximos módulos e também quais são os beneficios em se utilizar testes;
+  - No nosso curso iremos abordar os seguintes escopos de teste:
+    - Unitários:
+      - São testes responsáveis por testar unidades da nossa aplicação onde há regras
+        de negócio, como por exemplo em nossa aplicação as classes de UseCase
+
+    - Integração:
+      - São responsáveis por testar toda nossa aplicação, por exemplo em nossa aplicação realizaremos
+        o teste desde a requisição pela rota, controllers, UseCases e repositries. Ou seja testamos
+        o fluxo completo da aplicação desde a conexão do banco (no ambiente de testes), serviços,
+        serviços externos (como por exemplo envio de e-mail);
+  
+  - Também iremos abordar a utilização da métodologia TDD (Test Driven Development), ou seja, essa
+    métodologia guia nosso desnevolvimento a partir de testes, isto é, começamos o desenvolvimento abordar
+    partir da criação de testes para depois partirmos para o desenvolvimento da aplicação 
+    próprimanete dito;
+
+  - Vantagens e desvantagens na utilização de testes em uma aplicação:
+    - Vantagens:
+      - Em caso de mudança de uma regra de negócio o teste irá falhar caso esteja bem escrito, desta
+        forma temos um aliado enquanto a detecção de bugs em nossa aplicação, já que o cenário de teste
+        não foi alterado com as mudanças da regra de negócio;
+
+    - Desvantagem:
+      - Barreira/custo inicial, já que é preciso adptação e aprendizado sobre a ferramenta de testes;
