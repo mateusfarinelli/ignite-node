@@ -35,3 +35,37 @@
 
     - Desvantagem:
       - Barreira/custo inicial, já que é preciso adptação e aprendizado sobre a ferramenta de testes;
+
+  - Nesta aula vamos então começar a pratica de nossos testes;
+    - Iniciamos fazendo a instalação do "Jest" que é a biblioteca que iremos utilizar, bem como as
+      suas tipagens. Iremos instalar como dependência de deselvolvimento com o comando:
+        - "npm install --save-dev jest @types/jest"; 
+    - Em seguida rodamos o comando "npx jest --init", e vamos responder as perguntas como a seguir:
+        - Would you like to use Jest when running "test" script in "package.json"? ... yes
+        - Would you like to use Typescript for the configuration file? ... yes
+        - Choose the test environment that will be used for testing » node
+        - Automatically clear mock calls, instances and results before every test? ... yes
+    - Feito isso a lib disponibiliza na raiz do nosso projeto o arquivo "jest.config.ts" que é
+      o responsavel por armazenar as configurações de nosso ambiente;
+    - Vamos tambem instalar a biblioteca ts-jest como dependência de desenvolvimento com o comando:
+      - "npm install --save-dev ts-jest";
+    - E dentro do arquivo "jest.config.ts" vamos até a propriedade "preset" e descomenta-la. Em seguida
+      alteramos seu valor para "ts-jest"
+    - Também precisamos passar o mapeamento das classes que iremos realizar a cobertura. Procuramos
+      então pela propriedade "testMatch" e fazemos da seguinte forma:
+        - "testMatch: ["**/*.spec.ts"],"
+    - Vamos alterar o valor da propriedade "bail" para "true". Essa propriedade verifica a existencia
+      de erros, por padrão essa propriedade vem como "false" e executa todos os testes apresentando
+      os erros ao fim do ciclo. Com essa nova atribuição assim que existe uma primeira falha todo o
+      ciclo é interrompido mostrando onde foi ocasionado o erro;
+    - Vamos então criar nosso primeiro teste em:
+      - "src/modules/cars/useCases/createCategory/createCategoryUseCase.spec.ts"
+    - Basicamente um teste precisa que informemos o resultado esperado para que haja a comparação
+      entre o esperado e o recebido.
+    - Começamos então definindo o primeiro caso sendo o "Criar Categoria" usando o método "describe".
+      Com o método "it" passamos o titulo do teste e a lógica e em seguida com o método "expect" verificamos
+      o resultado;
+    - Também poderiamos verificar o caso contrario onde o método expect utiliza o método not para
+      esperar um resultado diferente do que é recebido;
+
+    
