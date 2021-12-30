@@ -68,4 +68,17 @@
     - Também poderiamos verificar o caso contrario onde o método expect utiliza o método not para
       esperar um resultado diferente do que é recebido;
 
-    
+  - Nessa aula vamos de fato criar nosso teste de createCategory;
+    - É muito importante deixar o teste o mais declartivo possível;
+    - Esbarramos na primeira barreira do nosso teste, já que nosso UseCase depende do repository e 
+      nos testes unitários não iremos testar o acesso ao banco de dados já que não é sua responsabilidade;
+    - Entretanto como utilizamos interfaces não precisamos depender do repository ja existente, poderiamos
+      criar um novo repository que não faz o acesso ao banco. Dito isto, criaremos para nossos testes
+      repositories "in-memory", então criamos o diretório com mesmo ome dentro do diretorio "repositories";
+    - Criamos a classe implementando a interface "CategoriesRepositoryInterface", definimos os métodos
+      como fizemos no inicio de nossos estudos;
+    - Fora do método de "describe" vamos definir 2 varaiveis que serão do tipo do nosso UseCase e do
+      tipo do In-Memory Repository que acabamos de criar e dentro da suite de teste no método "describe"
+      vamos fazer a chamada do método "beforeEach()" que executará sempre antes de cada teste. E assim
+      instanciamos as interfaces iremos utilizar;
+    - Então desenvolvemos as lógicas de criação e validação da criação de categoria com mesmo nome;
