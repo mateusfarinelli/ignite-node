@@ -82,3 +82,16 @@
       vamos fazer a chamada do método "beforeEach()" que executará sempre antes de cada teste. E assim
       instanciamos as interfaces iremos utilizar;
     - Então desenvolvemos as lógicas de criação e validação da criação de categoria com mesmo nome;
+
+  - Nesta aula vamos abordar o teste de autenticação do usuário;
+    - Iniciamos criando o arquivo "src/modules/accounts/useCases/authenticateUser/AuthenticateUserUseCase.spect.ts"
+      e deixando o método describe preparado para receber o código que iremos desenvolver;
+    - Em seguida criamos o arquivo "src/modules/accounts/repositories/in-memory/UserRepositoryInMemory.ts"
+      e definimos a classe implementando a interface UserRepositoryInterface e em seguida desenvolvemos
+      os métodos igual fizemos para os testes do "CreateCategoryRepositoryInMemory;
+    - Seguimos para nosso arquivo de testes onde iremos começar o desenvolvimento dos testes seguindo
+      o mesmo feito na suite do "CreateCategory", aqui a unica diferença é que precisamos criar um
+      usuário para nossos testes e fazemos isso na própria suite, entretanto isso não é uma boa prática
+      (nem de longe), e o correto seria criar a suite de testes dessa unidade para validar a aplicação
+      de maneira completa;
+  
