@@ -95,3 +95,24 @@
       (nem de longe), e o correto seria criar a suite de testes dessa unidade para validar a aplicação
       de maneira completa;
   
+  - Nessa aula vamos ver como melhorar o nossos "imports"
+    - O TS disponibiliza para nós um arquivo que já conhecemos que é o "tsconfig.json" nele todas
+      as configurações de desenvolvimento relacionados ao TS estão presentes, dentre elas a propriedade
+      "paths" que podemos utilizar para melhorar nossos imports;
+    - Começamos então passando o conjunto "chave: valor" => "@modules/*": ["modules/*"] que reresenta
+      o mapeamento do diretorio "modules" para nossos imports. Fazemos isso para as seguitnes pastas:
+        - * "paths": {
+          "@modules/*": ["modules/*"],
+          "@config/*": ["config/*"],
+          "@shared/*": ["shared/*"],
+          "@errors/*": ["errors/*"],
+          "@utils/*": ["utils/*"],
+        }, *
+    - Na propriedade "baseUrl" iremos atribuir o valor "./src" ficando:
+      - * "baseurl": "./src" *;
+    - Agora no "eslintrc.json" na propriedade "import-helpres/order-imports" em "groups"
+      iremos substituir o valor "/^@shared/" por "/^@/". Assim resolvemos os erros/warnings que o
+      ESLint apresenta nos nossos imports refatorados;
+    - Por fim precisamos instalar a dependência "tsconfig-paths" como dependência de desenvolvimento
+      com o comando:
+        - "npm install --save-dev tsconfig-paths"
