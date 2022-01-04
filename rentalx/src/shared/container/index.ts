@@ -1,10 +1,10 @@
 import { container } from "tsyringe";
 
-import { UserRepository } from "../../modules/accounts/repositories/implementations/UserRepository";
+import { UserRepository } from "../../modules/accounts/infra/typeorm/repositories/UserRepository";
 import { UserRepositoryInterface } from "../../modules/accounts/repositories/UserRepositoryInterface";
+import { CategoriesRepository } from "../../modules/cars/infra/typeorm/repositories/CategoriesRepository";
+import { SpecificationRepository } from "../../modules/cars/infra/typeorm/repositories/SpecificationRepository";
 import { CategoriesRepositoryInterface } from "../../modules/cars/repositories/CategoriesRepositoryInterface";
-import { CategoriesRepository } from "../../modules/cars/repositories/implementations/CategoriesRepository";
-import { SpecificationRepository } from "../../modules/cars/repositories/implementations/SpecificationRepository";
 import { SpecificationRepositoryInterface } from "../../modules/cars/repositories/SpecificationRepositoryInterface";
 
 /**

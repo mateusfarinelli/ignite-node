@@ -1,8 +1,8 @@
 import { getRepository, Repository } from "typeorm";
 
-import { CreateUserInterfaceDTO } from "../../dtos/CreateUserInterfaceDTO";
+import { CreateUserInterfaceDTO } from "../../../dtos/CreateUserInterfaceDTO";
+import { UserRepositoryInterface } from "../../../repositories/UserRepositoryInterface";
 import { User } from "../../entities/User";
-import { UserRepositoryInterface } from "../UserRepositoryInterface";
 
 class UserRepository implements UserRepositoryInterface {
   private repository: Repository<User>;

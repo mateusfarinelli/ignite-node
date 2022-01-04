@@ -1,5 +1,5 @@
 import { CreateUserInterfaceDTO } from "../dtos/CreateUserInterfaceDTO";
-import { User } from "../entities/User";
+import { User } from "../infra/entities/User";
 
 interface UserRepositoryInterface {
   create(data: CreateUserInterfaceDTO): Promise<void>;

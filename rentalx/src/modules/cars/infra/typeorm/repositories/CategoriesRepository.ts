@@ -1,10 +1,10 @@
 import { getRepository, Repository } from "typeorm";
 
-import { Category } from "../../entities/Category";
 import {
   CategoriesRepositoryInterface,
   CreatedCtegoryDTOInterface,
-} from "../CategoriesRepositoryInterface";
+} from "../../../repositories/CategoriesRepositoryInterface";
+import { Category } from "../entities/Category";
 
 // DTO => Data Transfer Object -> Objeto responsavel por fazer a transferencia de dados entre uma camada e outra
 /**

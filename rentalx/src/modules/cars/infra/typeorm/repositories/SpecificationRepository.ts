@@ -1,10 +1,10 @@
 import { getRepository, Repository } from "typeorm";
 
-import { Specification } from "../../entities/Specification";
 import {
   SpecificationRepositoryDTOInterface,
   SpecificationRepositoryInterface,
-} from "../SpecificationRepositoryInterface";
+} from "../../../repositories/SpecificationRepositoryInterface";
+import { Specification } from "../entities/Specification";
 
 class SpecificationRepository implements SpecificationRepositoryInterface {
   private repository: Repository<Specification>;

@@ -13,9 +13,9 @@ import multer from "multer";
 // import createCategoryController from "../modules/cars/useCases/createCategory";
 // import listCategoriesController from "../modules/cars/useCases/listCategories";
 
-import { CreateCategoryController } from "../modules/cars/useCases/createCategory/CreateCategoryController";
-import { ImportCategoryController } from "../modules/cars/useCases/importCategory/ImportCategoryController";
-import { ListCategoriesController } from "../modules/cars/useCases/listCategories/ListCategoriesController";
+import { CreateCategoryController } from "../../../../modules/cars/useCases/createCategory/CreateCategoryController";
+import { ImportCategoryController } from "../../../../modules/cars/useCases/importCategory/ImportCategoryController";
+import { ListCategoriesController } from "../../../../modules/cars/useCases/listCategories/ListCategoriesController";
 // Não será mais utlizado aqui
 // import { CreateCategoryUseCase } from "../modules/cars/useCases/createCategory/CreateCategoryUseCase";
 // import { CategoriesRepository } from "../modules/cars/repositories/CategoriesRepository";

@@ -130,3 +130,25 @@
         - "moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {prefix: "<rootDir>/src/"})";
     - Posteriormente no nosso arquivo "tsconfig.json" precisaremos remover todos os comentarios;
     - Ajustamos os imports nos nossos arquivos de testes como fizemos na aula passada;
+  
+  - Nessa aula iremos refatorar nossa aplicação para separar ainda mais as responsabilidades do nosso
+    projeto;
+    - Por exemplo, nossas entidades e implementações dos repositórios estão totalmente vinculadas ao
+      TypeORM, se um dia a lib for descontinuada ou aparecer uma lib melhor estaremos refém dela
+      por conta dessa dependência;
+    - Também nossa estrutura não está tão legivel, isto é, não há uma separação do "dominio" e da "infraestrutura";
+      - Dominio: camada mais interna, é o que representa o problema/negocio, regras de negócio (não tem dependência);
+      - Infraestrutura: camada mais externa que guarda e disponibiliza os dados (depende do dominio);
+    - Começamos então criando os diretorios "src/modules/cars/infra" e "src/modules/accounts/infra" e
+      deslocamos o diretório "entities" presente em cada um dos "useCases" para dentro desse novo
+      diretório;
+    - Agora faremos o mesmo para implementação dos nossos repositories já que eles tambem fazer uso
+      do tyeporm;
+    - Criamos o diretorio "src/shared/infra/http" para guardar todo código que dependa do express
+      para realizar uma chamada http como nossos middlewares, rotas e o arquivo "server.ts";
+    - Também iremos transferir o diretorio "src/database" para "src/shared/database" e renomea-lo para
+      "typeorm" ficnado "src/shared/typeorm" tendo em vista tudo que foi discutido até agora;
+    - Por fim alteramos o caminho do nosso arquivo princial no package json no script "dev";
+    - Como discutido a partir de agora tudo que não faça parte da responsabilidade das regras de negócio 
+      como serviços de envio de e-mail, conexões com APIS, uso de frameworks e etc será feito dentro 
+      do diretório de "infra";

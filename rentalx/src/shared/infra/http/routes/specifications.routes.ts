@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-import { ensureAuthenticated } from "../middleares/ensureAuthenticated";
-import { CreateSpecificationController } from "../modules/cars/useCases/createSpecification/CreateSpecificationController";
+import { CreateSpecificationController } from "../../../../modules/cars/useCases/createSpecification/CreateSpecificationController";
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 // Não serão mais utilizados devido a refatoração de Controllers e UseCases
 // import { SpecificationRepository } from "../modules/cars/repositories/SpecificationRepository";
 // import { CreateSpecificationService } from "../modules/cars/useCases/createSpecification/CreateSpecificationUseCase";

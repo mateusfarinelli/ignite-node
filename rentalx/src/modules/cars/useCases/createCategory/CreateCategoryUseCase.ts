@@ -5,7 +5,7 @@
 
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../../../errors/AppError";
+import { AppError } from "../../../../shared/errors/AppError";
 import { CategoriesRepositoryInterface } from "../../repositories/CategoriesRepositoryInterface";
 
 // Recebendo as informações necessárias conforme DTO criado no repository
