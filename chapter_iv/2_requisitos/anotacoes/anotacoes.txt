@@ -1,0 +1,3 @@
+#### REQUISITOS ###
+  - Mapear e definir os requisitos da nossa aplicação é o inicio e parte fundamental do desenvolvimento dos softwares;
+  - 
