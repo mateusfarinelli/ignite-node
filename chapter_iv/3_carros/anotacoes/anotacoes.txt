@@ -1,0 +1,8 @@
+#### TESTES ###
+
+  ### Carros
+  - Vamos começar a trabalhar em cima dos requisitos qu elevantamos no módulo passado (Requisitos);
+  - Iniciamos ajustando os caminhos das nossas migrations no arquivo "ormconfi.json";
+  - Em seguida vamos criar a magration "CreateCars" que será responsavel por criar a tabela de carros como ja visto anteriormente;
+
+  - 

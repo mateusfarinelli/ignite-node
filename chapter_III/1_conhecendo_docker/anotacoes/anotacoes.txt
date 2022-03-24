@@ -58,7 +58,7 @@
     pois nossa imagem apenas foi criada e não inicializada;
   - Para rodar nossa imagem iremos executar o comando "docker run -p <porta_local>:<porta_container> <nome_imagem>"
     ficando para nosso exemplo:
-      - "docker run -p 3333:3333 rentalx";
+      - "docker run -p 3000:3000 rentalx";
     - Lembrando que a opção "-p" realiza um mapeamento das portas por se tratar de uma especie de "VM";
   - Podemos acessar nosso container via terminal, utilizando o comando:
       - "docker exec -it <nome_container> /bin/bash";
