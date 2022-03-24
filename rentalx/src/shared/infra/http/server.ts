@@ -6,7 +6,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerFile from "../../../swagger.json";
 import { AppError } from "../../errors/AppError";
 import { routes } from "./routes";
-import "../../typeorm";
+import "../typeorm";
 import "../../container";
 
 // Não sera mais necessário importar rotas aqui;

@@ -3,11 +3,11 @@
   "port": 5432,
   "host": "localhost",
   "username": "docker",
-  "password": "database_ignite",
-  "database": "rentalx", 
-  "migrations": ["./src/database/migrations/*.ts"],
-  "entities": ["./src/modules/**/entities/*.ts"],
+  "password": "ignite",
+  "database": "rentx", 
+  "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+  "entities": ["./src/modules/**/infra/entities/*.ts"],
   "cli": {
-    "migrationsDir": "./src/database/migrations"
+    "migrationsDir": "./src/shared/infra/typeorm/migrations"
   }
 }
