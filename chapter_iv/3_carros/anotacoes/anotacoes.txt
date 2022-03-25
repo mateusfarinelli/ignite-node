@@ -15,7 +15,7 @@
     - Em seguida implementa a funcionalidade que a suite de teste irá cobrir satisfazendo a risca essa suite;
     - Por fim realizar a fatoração melhorando a qualidade e legibilidade da implementação. Nessa fase por sua vez
       o código refatorado deve novamente satisfazer a suite de testes sem que mesma seja modificada;
-  - Iniciamos então criando o use case "cars" em "rentalx/src/modules/cars/createCar/CreateCaruseCase.ts" bem como a
+  - Iniciamos então criando o use case "cars" em "rentalx/src/modules/cars/createCar/CreateCarUseCase.ts" bem como a
     suite de testes "CreateCarUseCase.spect.ts";
     - Definimos a classe "CrateCarUseCase" decorando a classe como injecatble (como visto nos passos anteriores);
     - E em seguida iniciamos nossa suite de testes pelo teste "shold be able to create a new car" utilizando jest (co-
@@ -25,8 +25,8 @@
     - Em seguida vamos até o método execute do useCase criado e vamos fazer a implementação, recebendo como parametro
       os dados necessários para inserir o registro do carro na tabela (ou seja todos os campos menos id e created_at);
     - Seguindo criamos a interface do repositorio em memoria da entidade "cars" em 
-      "rentalx/src/modules/cars/repositories/in-memory/IcarsRepository.ts" assim como temos para as demais entidades e
-      que já fizemos testes anteriormente;
+      "rentalx/src/modules/cars/repositories/in-memory/CarsRepositoryInterface.ts" assim como temos para as demais 
+      entidades e que já fizemos testes anteriormente;
     - Como utilizaremos as informações da entidade em varias classes, iremos criar um diretorio nomeado "dto" dentro do
       modulo "cars", onde então definiremos a interface com os atributos que necessitamos (ou seja, basicamente os
       mesmos campos que utilizamos em nosso useCase);
