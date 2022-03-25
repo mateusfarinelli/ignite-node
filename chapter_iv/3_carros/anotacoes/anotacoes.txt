@@ -3,6 +3,33 @@
   ### Carros
   - Vamos começar a trabalhar em cima dos requisitos qu elevantamos no módulo passado (Requisitos);
   - Iniciamos ajustando os caminhos das nossas migrations no arquivo "ormconfi.json";
-  - Em seguida vamos criar a magration "CreateCars" que será responsavel por criar a tabela de carros como ja visto anteriormente;
+  - Em seguida vamos criar a magration "CreateCars" que será responsavel por criar a tabela de carros como ja visto 
+    anteriormente;
 
-  - 
+  - Vamos começar criando os casos de uso;
+  - Agora assumiremos um conceito TDD, onde iremos desenvolver baseado (e iniciando) pelos testes, diferentemente do que
+    estavamos fazendo até então, já que, anteriormente faziamos o desenvolvimento das nossas funcionalidades para poste-
+    riormente criarmos nossos testes;
+  - O TDD segue o ciclo encontrado no arquivo "../tdd_cycle.jpg" segue a premissa:
+    - Inicia-se criando um teste que contemple os requisitos e que irá falhar (já que ainda não existe implementação);
+    - Em seguida implementa a funcionalidade que a suite de teste irá cobrir satisfazendo a risca essa suite;
+    - Por fim realizar a fatoração melhorando a qualidade e legibilidade da implementação. Nessa fase por sua vez
+      o código refatorado deve novamente satisfazer a suite de testes sem que mesma seja modificada;
+  - Iniciamos então criando o use case "cars" em "rentalx/src/modules/cars/createCar/CreateCaruseCase.ts" bem como a
+    suite de testes "CreateCarUseCase.spect.ts";
+    - Definimos a classe "CrateCarUseCase" decorando a classe como injecatble (como visto nos passos anteriores);
+    - E em seguida iniciamos nossa suite de testes pelo teste "shold be able to create a new car" utilizando jest (co-
+      forme ja vimos também);
+    - Dessa forma então entramos no primeiro estágio do ciclo, onde nosso teste falhou, já que não temos implementação
+      da funcionalidade para ser testada;
+    - Em seguida vamos até o método execute do useCase criado e vamos fazer a implementação, recebendo como parametro
+      os dados necessários para inserir o registro do carro na tabela (ou seja todos os campos menos id e created_at);
+    - Seguindo criamos a interface do repositorio em memoria da entidade "cars" em 
+      "rentalx/src/modules/cars/repositories/in-memory/IcarsRepository.ts" assim como temos para as demais entidades e
+      que já fizemos testes anteriormente;
+    - Como utilizaremos as informações da entidade em varias classes, iremos criar um diretorio nomeado "dto" dentro do
+      modulo "cars", onde então definiremos a interface com os atributos que necessitamos (ou seja, basicamente os
+      mesmos campos que utilizamos em nosso useCase);
+    - Em seguida iremos implementar o repositorio "CarsRepositoryInMemory" e também a entidade "Car" em 
+      "rentalx/src/modules/cars/infra/typeorm/entities/Car.ts";
+    
